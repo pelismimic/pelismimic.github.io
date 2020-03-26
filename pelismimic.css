@@ -1,0 +1,14 @@
+body,html {
+    height:90%;
+    font-family: 'Montserrat', sans-serif;
+}
+root {
+    font-family: 'Montserrat', sans-serif;
+}
+.container {
+    min-height:100%;
+}
+.footer {
+    height:30px;
+    margin-top:-30px;
+}
