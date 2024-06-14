@@ -9,7 +9,12 @@
 <body>
     <div class="container">
         <h1>Joc de Pel·lícules</h1>
-        <button id="startButton">Iniciar</button>
+        <div class="scores">
+            <div>Equip 1: <span id="score1">0</span></div>
+            <div>Equip 2: <span id="score2">0</span></div>
+        </div>
+        <button id="revealButton">Revelar Pel·lícula</button>
+        <button id="startButton" class="hidden">Començar</button>
         <div id="movieTitle" class="hidden"></div>
         <div id="countdown" class="hidden">60</div>
     </div>

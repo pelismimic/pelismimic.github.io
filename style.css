@@ -24,3 +24,13 @@ body {
     font-size: 2em;
     margin: 20px 0;
 }
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.scores div {
+    font-size: 1.2em;
+}
