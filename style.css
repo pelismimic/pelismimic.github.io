@@ -34,3 +34,11 @@ body {
 .scores div {
     font-size: 1.2em;
 }
+
+.equip1 {
+    color: blue;
+}
+
+.equip2 {
+    color: red;
+}
