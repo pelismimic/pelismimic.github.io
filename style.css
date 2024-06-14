@@ -31,14 +31,25 @@ body {
     margin-bottom: 20px;
 }
 
-.scores div {
+.scores .score {
     font-size: 1.2em;
+    padding: 10px;
 }
 
-.equip1 {
-    color: blue;
+.highlight-equip1, .highlight-equip2 {
+    border: 3px solid;
 }
 
-.equip2 {
-    color: red;
+.highlight-equip1 {
+    border-color: blue;
+}
+
+.highlight-equip2 {
+    border-color: red;
+}
+
+#turnButton {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
 }
