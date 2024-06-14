@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let movieList = [];
 
     // Carregar la llista de pel·lícules des del fitxer JSON
-    fetch('movies.json')
+    fetch('https://pelismimic.github.io/movies.json')
         .then(response => response.json())
         .then(data => {
             movieList = data;
