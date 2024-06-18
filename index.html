@@ -8,10 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pel·lícules i Mímica</h1>
+        <h1 id="title">Pel·lícules i Mímica</h1>
         
-        <!-- Espai reduït entre el títol i les opcions de configuració -->
         <div class="config-space"></div>
+
+        <div class="scores">
+            <div id="team1" class="score">Equip 1: <span id="score1">0</span></div>
+            <div id="team2" class="score">Equip 2: <span id="score2">0</span></div>
+            <div id="team3" class="score hidden">Equip 3: <span id="score3">0</span></div>
+            <div id="team4" class="score hidden">Equip 4: <span id="score4">0</span></div>
+        </div>
+
+        <button id="turnButton" class="large-button hidden"></button>
+        <button id="revealButton" class="large-button">Revelar Pel·lícula</button>
+        <button id="startButton" class="large-button hidden">Començar</button>
+        <button id="endButton" class="large-button hidden">Acabar i Sumar Punt</button>
+        <button id="correctButton" class="large-button hidden" style="background-color: green;">Sumar 1 Punt</button>
+        <button id="incorrectButton" class="large-button hidden" style="background-color: red;">No Acertat</button>
+        <div id="movieTitle" class="hidden"></div>
+        <div id="countdown" class="hidden">10</div>
 
         <!-- Secció de configuració -->
         <div class="config hidden" id="configSection">
@@ -45,25 +60,22 @@
                     <option value="10">10</option>
                 </select>
             </div>
+            <div class="config-option">
+                <label for="language">Idioma:</label>
+                <select id="language">
+                    <option value="ca">Català</option>
+                    <option value="es">Castellà</option>
+                    <!-- Afegeix altres idiomes aquí -->
+                </select>
+            </div>
             <button id="applyConfigButton">Aplicar Canvis</button>
+            <button id="cancelConfigButton">Cancel·lar</button>
         </div>
-
-        <!-- Botó per mostrar configuració -->
-        <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
-
-        <div class="scores">
-            <div id="team1" class="score">Equip 1: <span id="score1">0</span></div>
-            <div id="team2" class="score">Equip 2: <span id="score2">0</span></div>
-            <div id="team3" class="score hidden">Equip 3: <span id="score3">0</span></div>
-            <div id="team4" class="score hidden">Equip 4: <span id="score4">0</span></div>
-        </div>
-        <button id="turnButton" class="hidden"></button>
-        <button id="revealButton">Revelar Pel·lícula</button>
-        <button id="startButton" class="hidden">Començar</button>
-        <button id="endButton" class="hidden">Acabar i Sumar Punt</button>
-        <div id="movieTitle" class="hidden"></div>
-        <div id="countdown" class="hidden">10</div>
     </div>
+
+    <!-- Botó de modificació de configuració -->
+    <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
+
     <script src="script.js"></script>
 </body>
 </html>
