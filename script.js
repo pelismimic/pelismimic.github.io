@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let translations = {};
     let currentLang = 'ca';
 
+    // Detectar l'idioma del navegador
+    const browserLang = navigator.language.slice(0, 2);
+    currentLang = browserLang in translations ? browserLang : 'ca';
+
     // Carregar pel·lícules
     fetch('https://pelismimic.github.io/movies.json')
         .then(response => response.json())
@@ -28,42 +32,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdown = document.getElementById('countdown');
     const correctButton = document.getElementById('correctButton');
     const incorrectButton = document.getElementById('incorrectButton');
-    const score1 = document.getElementById('score1');
-    const score2 = document.getElementById('score2');
-    const score3 = document.getElementById('score3');
-    const score4 = document.getElementById('score4');
-    const team1 = document.getElementById('team1');
-    const team2 = document.getElementById('team2');
-    const team3 = document.getElementById('team3');
-    const team4 = document.getElementById('team4');
+    const modifyConfigButton = document.getElementById('modifyConfigButton');
+    const applyConfigButton = document.getElementById('applyConfigButton');
+    const cancelConfigButton = document.getElementById('cancelConfigButton');
+    const helpButton = document.getElementById('helpButton');
+    const helpModal = document.getElementById('helpModal');
+    const helpText = document.getElementById('helpText');
+    const closeButton = document.querySelector('.close-button');
+    const configSection = document.getElementById('configSection');
+
     const numTeamsSelect = document.getElementById('numTeams');
     const timeDurationSelect = document.getElementById('timeDuration');
     const numMoviesSelect = document.getElementById('numMovies');
     const languageSelect = document.getElementById('language');
-    const modifyConfigButton = document.getElementById('modifyConfigButton');
-    const applyConfigButton = document.getElementById('applyConfigButton');
-    const cancelConfigButton = document.getElementById('cancelConfigButton');
-    const configSection = document.getElementById('configSection');
-    let currentTitle = "";
-    let currentTeam = 1;
-    let timer;
-    let timeDuration = 10;
-    let numTeams = 2;
+
+    const team1 = document.getElementById('team1');
+    const team2 = document.getElementById('team2');
+    const team3 = document.getElementById('team3');
+    const team4 = document.getElementById('team4');
+    const score1 = document.getElementById('score1');
+    const score2 = document.getElementById('score2');
+    const score3 = document.getElementById('score3');
+    const score4 = document.getElementById('score4');
 
     const teams = [team1, team2, team3, team4];
     const scores = [score1, score2, score3, score4];
 
+    const teamColors = ['#0000FF', '#4B0082', '#FFA500', '#FFC0CB'];
+
+    let currentTitle = '';
+    let currentTeam = 1;
+    let timer;
+    let numTeams = 2;
+    let timeDuration = 10;
+
     function switchTeam() {
-        currentTeam = currentTeam % numTeams + 1;
-        highlightCurrentTeam();
+        currentTeam = currentTeam < numTeams ? currentTeam + 1 : 1;
+        updateTeamColors();
     }
 
-    function highlightCurrentTeam() {
+    function updateTeamColors() {
         teams.forEach((team, index) => {
-            team.classList.remove('highlight-equip1', 'highlight-equip2', 'highlight-equip3', 'highlight-equip4');
-            if (index + 1 === currentTeam) {
-                team.classList.add(`highlight-equip${currentTeam}`);
-            }
+            team.style.borderColor = (index + 1 === currentTeam) ? teamColors[index] : 'transparent';
+            team.style.backgroundColor = (index + 1 === currentTeam) ? teamColors[index] + '20' : 'rgba(0,0,0,0.1)';
         });
     }
 
@@ -110,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 movieTitle.classList.add('hidden');
                 correctButton.classList.remove('hidden');
                 incorrectButton.classList.remove('hidden');
-                new Audio('https://www.soundjay.com/button/beep-07.wav').play();
+                new Audio('https://pelismimic.github.io/sirena.mp3').play();
             }
         }, 1000);
     });
@@ -174,7 +185,17 @@ document.addEventListener('DOMContentLoaded', () => {
         configSection.classList.add('hidden');
     });
 
+    helpButton.addEventListener('click', () => {
+        helpText.textContent = translations[currentLang].helpText;
+        helpModal.classList.remove('hidden');
+    });
+
+    closeButton.addEventListener('click', () => {
+        helpModal.classList.add('hidden');
+    });
+
     function applyTranslations() {
+        if (!translations[currentLang]) return;
         document.getElementById('title').textContent = translations[currentLang].title;
         revealButton.textContent = translations[currentLang].revealButton;
         startButton.textContent = translations[currentLang].startButton;
@@ -190,8 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('label[for="language"]').textContent = translations[currentLang].config.language;
         applyConfigButton.textContent = translations[currentLang].config.apply;
         cancelConfigButton.textContent = translations[currentLang].config.cancel;
+        helpButton.textContent = translations[currentLang].config.help;
     }
 
+    // Assign default values
     numTeamsSelect.value = "2";
     timeDurationSelect.value = "10";
     numMoviesSelect.value = "4";

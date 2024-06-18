@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1 id="title">Pel·lícules i Mímica</h1>
-        
+
         <div class="config-space"></div>
 
         <div class="scores">
@@ -73,8 +73,20 @@
         </div>
     </div>
 
-    <!-- Botó de modificació de configuració -->
-    <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
+    <!-- Botons de modificació de configuració i ajuda -->
+    <div class="buttons-section">
+        <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
+        <button id="helpButton" class="config-button">Ajuda</button>
+    </div>
+
+    <!-- Finestra modal per a ajuda -->
+    <div id="helpModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Ajuda</h2>
+            <p id="helpText"></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
