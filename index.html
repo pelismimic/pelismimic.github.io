@@ -9,9 +9,53 @@
 <body>
     <div class="container">
         <h1>Pel·lícules i Mímica</h1>
+        
+        <!-- Espai reduït entre el títol i les opcions de configuració -->
+        <div class="config-space"></div>
+
+        <!-- Secció de configuració -->
+        <div class="config hidden" id="configSection">
+            <h2>Configuració</h2>
+            <div class="config-option">
+                <label for="numTeams">Quants equips:</label>
+                <select id="numTeams">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="config-option">
+                <label for="timeDuration">Durada del temps:</label>
+                <select id="timeDuration">
+                    <option value="10">10</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                    <option value="120">120</option>
+                </select>
+            </div>
+            <div class="config-option">
+                <label for="numMovies">Quantes pel·lícules:</label>
+                <select id="numMovies">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button id="applyConfigButton">Aplicar Canvis</button>
+        </div>
+
+        <!-- Botó per mostrar configuració -->
+        <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
+
         <div class="scores">
             <div id="team1" class="score">Equip 1: <span id="score1">0</span></div>
             <div id="team2" class="score">Equip 2: <span id="score2">0</span></div>
+            <div id="team3" class="score hidden">Equip 3: <span id="score3">0</span></div>
+            <div id="team4" class="score hidden">Equip 4: <span id="score4">0</span></div>
         </div>
         <button id="turnButton" class="hidden"></button>
         <button id="revealButton">Revelar Pel·lícula</button>

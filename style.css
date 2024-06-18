@@ -17,12 +17,12 @@ body {
 
 #movieTitle {
     font-size: 1.5em;
-    margin: 20px 0;
+    margin: 10px 0;  /* Reduïm l'espai entre el títol i el contingut */
 }
 
 #countdown {
     font-size: 2em;
-    margin: 20px 0;
+    margin: 10px 0;  /* Reduïm l'espai entre el títol i el contingut */
 }
 
 .scores {
@@ -36,20 +36,53 @@ body {
     padding: 10px;
 }
 
-.highlight-equip1, .highlight-equip2 {
-    border: 3px solid;
-}
-
 .highlight-equip1 {
-    border-color: blue;
+    border: 3px solid blue;
+    color: blue;
 }
 
 .highlight-equip2 {
-    border-color: red;
+    border: 3px solid red;
+    color: red;
+}
+
+.highlight-equip3 {
+    border: 3px solid green;
+    color: green;
+}
+
+.highlight-equip4 {
+    border: 3px solid orange;
+    color: orange;
 }
 
 #turnButton {
     margin: 20px;
     padding: 10px 20px;
     font-size: 1.2em;
+}
+
+.config-button {
+    margin-top: 20px;  /* Marge superior ajustat per separar dels altres elements */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: 2px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.config {
+    margin-top: 20px;  /* Marge superior ajustat per separar dels altres elements */
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.config-space {
+    margin-top: 10px;  /* Espai ajustat entre el títol i les opcions de configuració */
+}
+
+.config-option {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 }
