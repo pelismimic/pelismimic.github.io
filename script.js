@@ -31,6 +31,51 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuració dels colors dels equips
     const teamColors = ['#007BFF', '#800080', '#FFA500', '#FFC0CB'];
 
+    // Traduccions en diferents idiomes
+    const translations = {
+        ca: {
+            title: 'Pel·lícules i Mímica',
+            revealButton: 'Revelar Pel·lícula',
+            startButton: 'Començar',
+            endButton: 'Acabar i Sumar Punt',
+            correctButton: 'Sumar 1 Punt',
+            incorrectButton: 'No Acertat',
+            turnButton: 'Torn de l\'equip',
+            config: {
+                title: 'Configuració',
+                numTeams: 'Nombre d\'equips:',
+                timeDuration: 'Durada del temps (segons):',
+                numMovies: 'Quantitat de pel·lícules:',
+                language: 'Idioma:',
+                apply: 'Aplicar Canvis',
+                cancel: 'Cancel·lar',
+                help: 'Ajuda'
+            },
+            helpText: 'Aquí van les instruccions en català...'
+        },
+        es: {
+            title: 'Películas y Mímica',
+            revealButton: 'Revelar Película',
+            startButton: 'Comenzar',
+            endButton: 'Terminar y Sumar Punto',
+            correctButton: 'Sumar 1 Punto',
+            incorrectButton: 'No Acertado',
+            turnButton: 'Turno del equipo',
+            config: {
+                title: 'Configuración',
+                numTeams: 'Número de equipos:',
+                timeDuration: 'Duración del tiempo (segundos):',
+                numMovies: 'Cantidad de películas:',
+                language: 'Idioma:',
+                apply: 'Aplicar Cambios',
+                cancel: 'Cancelar',
+                help: 'Ayuda'
+            },
+            helpText: 'Aquí van las instrucciones en español...'
+        }
+        // Afegeix altres idiomes segons calgui
+    };
+
     // Funció per canviar d'equip
     function switchTeam() {
         currentTeam = currentTeam < numTeams ? currentTeam + 1 : 1;
@@ -211,29 +256,55 @@ document.addEventListener('DOMContentLoaded', function() {
     timeDurationSelect.value = "10";
     numMoviesSelect.value = "4";
 
-    showTurnButton();
-});
+    // Inicialització de l'aplicació
+    function init() {
+        // Càrrega de l'idioma des de la cookie o detecció del navegador
+        const savedLang = getCookie('language');
+        currentLang = savedLang || (navigator.language.startsWith('es') ? 'es' : 'ca');
+        languageSelect.value = currentLang;
+        applyTranslations();
 
-// Funció per establir una cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-// Funció per obtenir el valor d'una cookie
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i];
-        while (cookie.charAt(0) === ' ') {
-            cookie = cookie.substring(1);
-        }
-        if (cookie.indexOf(nameEQ) === 0) {
-            return cookie.substring(nameEQ.length, cookie.length);
-        }
+        // Carregar les pel·lícules
+        fetchMovies();
     }
-    return null;
-}
+
+    // Funció per establir una cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    // Funció per obtenir el valor d'una cookie
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(nameEQ) === 0) {
+                return cookie.substring(nameEQ.length, cookie.length);
+            }
+        }
+        return null;
+    }
+
+    // Funció per carregar la llista de pel·lícules
+    function fetchMovies() {
+        fetch('https://pelismimic.github.io/movies.json')
+            .then(response => response.json())
+            .then(data => {
+                movieList = data.movies.slice(0, numMoviesSelect.value);
+            })
+            .catch(error => {
+                console.error('Error carregant les pel·lícules:', error);
+                alert('Error carregant les pel·lícules.');
+            });
+    }
+
+    // Inicialitzar l'aplicació
+    init();
+});
