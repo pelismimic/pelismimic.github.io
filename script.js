@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Detectar l'idioma del navegador
     const browserLang = navigator.language.slice(0, 2);
-    currentLang = browserLang in translations ? browserLang : 'ca';
+    currentLang = getCookie('language') || (browserLang in translations ? browserLang : 'ca');
 
     // Carregar pel·lícules
     fetch('https://pelismimic.github.io/movies.json')
@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLang = languageSelect.value;
         applyTranslations();
 
+        // Guardar l'idioma seleccionat en una cookie
+        setCookie('language', currentLang, 365);
+
         configSection.classList.add('hidden');
 
         scores.forEach(score => score.textContent = "0");
@@ -221,3 +224,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showTurnButton();
 });
+
+// Funció per establir una cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Funció per obtenir el valor d'una cookie
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+            return cookie.substring(nameEQ.length, cookie.length);
+        }
+    }
+    return null;
+}

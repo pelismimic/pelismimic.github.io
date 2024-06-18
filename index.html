@@ -26,21 +26,28 @@
         <button id="correctButton" class="large-button hidden" style="background-color: green;">Sumar 1 Punt</button>
         <button id="incorrectButton" class="large-button hidden" style="background-color: red;">No Acertat</button>
         <div id="movieTitle" class="hidden"></div>
-        <div id="countdown" class="hidden">10</div>
+        <div id="countdown" class="hidden"></div>
 
-        <!-- Secció de configuració -->
-        <div class="config hidden" id="configSection">
+        <!-- Finestra modal d'ajuda -->
+        <div id="helpModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p id="helpText"></p>
+            </div>
+        </div>
+
+        <div class="config-section" id="configSection">
             <h2>Configuració</h2>
-            <div class="config-option">
-                <label for="numTeams">Quants equips:</label>
+            <div class="config-options">
+                <label for="numTeams">Nombre d'equips:</label>
                 <select id="numTeams">
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select>
             </div>
-            <div class="config-option">
-                <label for="timeDuration">Durada del temps:</label>
+            <div class="config-options">
+                <label for="timeDuration">Durada del temps (segons):</label>
                 <select id="timeDuration">
                     <option value="10">10</option>
                     <option value="60">60</option>
@@ -48,8 +55,8 @@
                     <option value="120">120</option>
                 </select>
             </div>
-            <div class="config-option">
-                <label for="numMovies">Quantes pel·lícules:</label>
+            <div class="config-options">
+                <label for="numMovies">Quantitat de pel·lícules:</label>
                 <select id="numMovies">
                     <option value="4">4</option>
                     <option value="5">5</option>
@@ -60,31 +67,19 @@
                     <option value="10">10</option>
                 </select>
             </div>
-            <div class="config-option">
+            <div class="config-options">
                 <label for="language">Idioma:</label>
                 <select id="language">
                     <option value="ca">Català</option>
                     <option value="es">Castellà</option>
-                    <!-- Afegeix altres idiomes aquí -->
+                    <!-- Afegeix altres opcions d'idioma aquí -->
                 </select>
             </div>
-            <button id="applyConfigButton">Aplicar Canvis</button>
-            <button id="cancelConfigButton">Cancel·lar</button>
-        </div>
-    </div>
-
-    <!-- Botons de modificació de configuració i ajuda -->
-    <div class="buttons-section">
-        <button id="modifyConfigButton" class="config-button">Modificar Configuració</button>
-        <button id="helpButton" class="config-button">Ajuda</button>
-    </div>
-
-    <!-- Finestra modal per a ajuda -->
-    <div id="helpModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Ajuda</h2>
-            <p id="helpText"></p>
+            <div class="config-buttons">
+                <button id="applyConfigButton">Aplicar Canvis</button>
+                <button id="cancelConfigButton">Cancel·lar</button>
+                <button id="helpButton">Ajuda</button>
+            </div>
         </div>
     </div>
 
