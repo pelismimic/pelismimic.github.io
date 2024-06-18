@@ -1,5 +1,5 @@
 {
-    "ca": {
+  "ca": {
       "title": "Pel·lícules i Mímica",
       "revealButton": "Revelar Pel·lícula",
       "startButton": "Començar",
@@ -8,18 +8,19 @@
       "incorrectButton": "No Acertat",
       "turnButton": "Torn de l'equip",
       "config": {
-        "title": "Configuració",
-        "numTeams": "Nombre d'equips:",
-        "timeDuration": "Durada del temps (segons):",
-        "numMovies": "Quantitat de pel·lícules:",
-        "language": "Idioma:",
-        "apply": "Aplicar Canvis",
-        "cancel": "Cancel·lar",
-        "help": "Ajuda"
+          "title": "Configuració",
+          "numTeams": "Nombre d'equips:",
+          "timeDuration": "Durada del temps (segons):",
+          "numMovies": "Quantitat de pel·lícules:",
+          "language": "Idioma:",
+          "apply": "Aplicar Canvis",
+          "cancel": "Cancel·lar",
+          "modify": "Modificar Configuració",
+          "help": "Ajuda"
       },
-      "helpText": "Aquí van les instruccions en català..."
-    },
-    "es": {
+      "helpText": "Aquesta és una aplicació per jugar a les pel·lícules i mímica. Cada equip ha de representar la pel·lícula revelada abans que el temps s'acabi."
+  },
+  "es": {
       "title": "Películas y Mímica",
       "revealButton": "Revelar Película",
       "startButton": "Comenzar",
@@ -28,17 +29,16 @@
       "incorrectButton": "No Acertado",
       "turnButton": "Turno del equipo",
       "config": {
-        "title": "Configuración",
-        "numTeams": "Número de equipos:",
-        "timeDuration": "Duración del tiempo (segundos):",
-        "numMovies": "Cantidad de películas:",
-        "language": "Idioma:",
-        "apply": "Aplicar Cambios",
-        "cancel": "Cancelar",
-        "help": "Ayuda"
+          "title": "Configuración",
+          "numTeams": "Número de equipos:",
+          "timeDuration": "Duración del tiempo (segundos):",
+          "numMovies": "Cantidad de películas:",
+          "language": "Idioma:",
+          "apply": "Aplicar Cambios",
+          "cancel": "Cancelar",
+          "modify": "Modificar Configuración",
+          "help": "Ayuda"
       },
-      "helpText": "Aquí van las instrucciones en español..."
-    }
-    // Afegeix altres idiomes segons calgui
+      "helpText": "Esta es una aplicación para jugar a las películas y mímica. Cada equipo debe representar la película revelada antes de que el tiempo se acabe."
   }
-  
+}
