@@ -1,83 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let movieList = [];
-    let translations = {};
-    let currentLang = 'ca';
+document.addEventListener('DOMContentLoaded', function() {
+    // Variables globals
+    let currentTitle = '';
+    let currentTeam = 1;
+    let timer;
+    let numTeams = 2;
+    let timeDuration = 10;
+    let currentLang = 'ca'; // Idioma per defecte és català
 
-    // Detectar l'idioma del navegador
-    const browserLang = navigator.language.slice(0, 2);
-    currentLang = getCookie('language') || (browserLang in translations ? browserLang : 'ca');
-
-    // Carregar pel·lícules
-    fetch('https://pelismimic.github.io/movies.json')
-        .then(response => response.json())
-        .then(data => {
-            movieList = data;
-        })
-        .catch(error => console.error('Error carregant les pel·lícules:', error));
-
-    // Carregar traduccions
-    fetch('https://pelismimic.github.io/translations.json')
-        .then(response => response.json())
-        .then(data => {
-            translations = data;
-            applyTranslations();
-        })
-        .catch(error => console.error('Error carregant les traduccions:', error));
-
+    // Selecció d'elements del DOM
+    const movieTitle = document.getElementById('movieTitle');
+    const countdown = document.getElementById('countdown');
+    const turnButton = document.getElementById('turnButton');
     const revealButton = document.getElementById('revealButton');
     const startButton = document.getElementById('startButton');
     const endButton = document.getElementById('endButton');
-    const turnButton = document.getElementById('turnButton');
-    const movieTitle = document.getElementById('movieTitle');
-    const countdown = document.getElementById('countdown');
     const correctButton = document.getElementById('correctButton');
     const incorrectButton = document.getElementById('incorrectButton');
-    const modifyConfigButton = document.getElementById('modifyConfigButton');
+    const configSection = document.getElementById('configSection');
     const applyConfigButton = document.getElementById('applyConfigButton');
     const cancelConfigButton = document.getElementById('cancelConfigButton');
     const helpButton = document.getElementById('helpButton');
     const helpModal = document.getElementById('helpModal');
     const helpText = document.getElementById('helpText');
     const closeButton = document.querySelector('.close-button');
-    const configSection = document.getElementById('configSection');
-
     const numTeamsSelect = document.getElementById('numTeams');
     const timeDurationSelect = document.getElementById('timeDuration');
     const numMoviesSelect = document.getElementById('numMovies');
     const languageSelect = document.getElementById('language');
 
-    const team1 = document.getElementById('team1');
-    const team2 = document.getElementById('team2');
-    const team3 = document.getElementById('team3');
-    const team4 = document.getElementById('team4');
-    const score1 = document.getElementById('score1');
-    const score2 = document.getElementById('score2');
-    const score3 = document.getElementById('score3');
-    const score4 = document.getElementById('score4');
+    // Configuració dels colors dels equips
+    const teamColors = ['#007BFF', '#800080', '#FFA500', '#FFC0CB'];
 
-    const teams = [team1, team2, team3, team4];
-    const scores = [score1, score2, score3, score4];
-
-    const teamColors = ['#0000FF', '#4B0082', '#FFA500', '#FFC0CB'];
-
-    let currentTitle = '';
-    let currentTeam = 1;
-    let timer;
-    let numTeams = 2;
-    let timeDuration = 10;
-
+    // Funció per canviar d'equip
     function switchTeam() {
         currentTeam = currentTeam < numTeams ? currentTeam + 1 : 1;
         updateTeamColors();
     }
 
+    // Funció per actualitzar els colors dels equips
     function updateTeamColors() {
+        const teams = document.querySelectorAll('.score');
         teams.forEach((team, index) => {
             team.style.borderColor = (index + 1 === currentTeam) ? teamColors[index] : 'transparent';
             team.style.backgroundColor = (index + 1 === currentTeam) ? teamColors[index] + '20' : 'rgba(0,0,0,0.1)';
         });
     }
 
+    // Funció per mostrar el botó del torn actual i amagar la resta
     function showTurnButton() {
         turnButton.textContent = `${translations[currentLang].turnButton} ${currentTeam}`;
         turnButton.classList.remove('hidden');
@@ -90,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         countdown.classList.add('hidden');
     }
 
+    // Event listener pel botó de revelar pel·lícula
     revealButton.addEventListener('click', () => {
         if (movieList.length > 0) {
             currentTitle = movieList[Math.floor(Math.random() * movieList.length)];
@@ -102,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Event listener pel botó de començar
     startButton.addEventListener('click', () => {
         countdown.classList.remove('hidden');
         startButton.classList.add('hidden');
@@ -126,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 
+    // Event listener pel botó d'acabar
     endButton.addEventListener('click', () => {
         clearInterval(timer);
         countdown.classList.add('hidden');
@@ -133,13 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
         endButton.classList.add('hidden');
         revealButton.classList.remove('hidden');
 
+        // Sumar punt a l'equip actual
+        const scores = document.querySelectorAll('.score');
         scores[currentTeam - 1].textContent = parseInt(scores[currentTeam - 1].textContent) + 1;
 
+        // Canviar a l'equip següent
         switchTeam();
         showTurnButton();
     });
 
+    // Event listener pel botó de sumar 1 punt
     correctButton.addEventListener('click', () => {
+        // Sumar punt a l'equip actual
+        const scores = document.querySelectorAll('.score');
         scores[currentTeam - 1].textContent = parseInt(scores[currentTeam - 1].textContent) + 1;
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
@@ -147,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showTurnButton();
     });
 
+    // Event listener pel botó de no acertat
     incorrectButton.addEventListener('click', () => {
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
@@ -154,10 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showTurnButton();
     });
 
-    modifyConfigButton.addEventListener('click', () => {
+    // Event listener pel botó de modificar configuració
+    document.getElementById('modifyConfigButton').addEventListener('click', () => {
         configSection.classList.toggle('hidden');
     });
 
+    // Event listener pel botó d'aplicar configuració
     applyConfigButton.addEventListener('click', () => {
         numTeams = parseInt(numTeamsSelect.value);
         timeDuration = parseInt(timeDurationSelect.value);
@@ -170,8 +151,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         configSection.classList.add('hidden');
 
+        // Reiniciar marcadors
+        const scores = document.querySelectorAll('.score');
         scores.forEach(score => score.textContent = "0");
 
+        // Mostrar/ocultar equips segons la configuració
+        const teams = document.querySelectorAll('.score');
         teams.forEach((team, index) => {
             if (index < numTeams) {
                 team.classList.remove('hidden');
@@ -184,19 +169,23 @@ document.addEventListener('DOMContentLoaded', () => {
         showTurnButton();
     });
 
+    // Event listener pel botó de cancel·lar configuració
     cancelConfigButton.addEventListener('click', () => {
         configSection.classList.add('hidden');
     });
 
+    // Event listener pel botó d'ajuda
     helpButton.addEventListener('click', () => {
         helpText.textContent = translations[currentLang].helpText;
         helpModal.classList.remove('hidden');
     });
 
+    // Event listener pel botó de tancar finestra modal d'ajuda
     closeButton.addEventListener('click', () => {
         helpModal.classList.add('hidden');
     });
 
+    // Funció per aplicar les traduccions segons l'idioma seleccionat
     function applyTranslations() {
         if (!translations[currentLang]) return;
         document.getElementById('title').textContent = translations[currentLang].title;
@@ -217,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         helpButton.textContent = translations[currentLang].config.help;
     }
 
-    // Assign default values
+    // Assignar valors per defecte als selects
     numTeamsSelect.value = "2";
     timeDurationSelect.value = "10";
     numMoviesSelect.value = "4";

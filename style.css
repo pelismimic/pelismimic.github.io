@@ -1,4 +1,89 @@
-/* Estils per la finestra modal d'ajuda */
+/* Estils per a l'aplicació Pel·lícules i Mímica */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.score {
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.large-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.large-button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Configuració */
+
+.config-section {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.config-options {
+    margin-bottom: 10px;
+}
+
+.config-options label {
+    display: inline-block;
+    width: 180px;
+}
+
+.config-buttons {
+    margin-top: 20px;
+}
+
+.config-buttons button {
+    margin-right: 10px;
+}
+
+/* Finestra Modal d'Ajuda */
+
 .modal {
     display: none;
     position: fixed;
@@ -37,32 +122,12 @@
     cursor: pointer;
 }
 
-/* Estils per secció de configuració */
-.config-section {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    display: none;
-}
+/* Resposta i altres estils */
 
-.config-options {
-    margin-bottom: 10px;
-}
-
-.config-options label {
-    display: inline-block;
-    width: 180px;
-}
-
-.config-buttons {
-    margin-top: 20px;
-}
-
-.config-buttons button {
-    margin-right: 10px;
-}
-
-.hidden {
-    display: none;
+@media (max-width: 600px) {
+    .config-options label {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
 }
