@@ -1,42 +1,44 @@
 {
     "ca": {
-        "title": "Pel·lícules i Mímica",
-        "revealButton": "Revelar Pel·lícula",
-        "startButton": "Començar",
-        "endButton": "Acabar i Sumar Punt",
-        "correctButton": "Sumar 1 Punt",
-        "incorrectButton": "No Acertat",
-        "turnButton": "Torn de l'equip",
-        "config": {
-            "title": "Configuració",
-            "numTeams": "Quants equips:",
-            "timeDuration": "Durada del temps:",
-            "numMovies": "Quantes pel·lícules:",
-            "language": "Idioma:",
-            "apply": "Aplicar Canvis",
-            "cancel": "Cancel·lar",
-            "help": "Ajuda"
-        },
-        "helpText": "Instruccions del joc..."
+      "title": "Pel·lícules i Mímica",
+      "revealButton": "Revelar Pel·lícula",
+      "startButton": "Començar",
+      "endButton": "Acabar i Sumar Punt",
+      "correctButton": "Sumar 1 Punt",
+      "incorrectButton": "No Acertat",
+      "turnButton": "Torn de l'equip",
+      "config": {
+        "title": "Configuració",
+        "numTeams": "Nombre d'equips:",
+        "timeDuration": "Durada del temps (segons):",
+        "numMovies": "Quantitat de pel·lícules:",
+        "language": "Idioma:",
+        "apply": "Aplicar Canvis",
+        "cancel": "Cancel·lar",
+        "help": "Ajuda"
+      },
+      "helpText": "Aquí van les instruccions en català..."
     },
     "es": {
-        "title": "Películas y Mímica",
-        "revealButton": "Revelar Película",
-        "startButton": "Comenzar",
-        "endButton": "Terminar y Sumar Punto",
-        "correctButton": "Sumar 1 Punto",
-        "incorrectButton": "No Acertado",
-        "turnButton": "Turno del equipo",
-        "config": {
-            "title": "Configuración",
-            "numTeams": "Cuántos equipos:",
-            "timeDuration": "Duración del tiempo:",
-            "numMovies": "Cuántas películas:",
-            "language": "Idioma:",
-            "apply": "Aplicar Cambios",
-            "cancel": "Cancelar",
-            "help": "Ayuda"
-        },
-        "helpText": "Instrucciones del juego..."
+      "title": "Películas y Mímica",
+      "revealButton": "Revelar Película",
+      "startButton": "Comenzar",
+      "endButton": "Terminar y Sumar Punto",
+      "correctButton": "Sumar 1 Punto",
+      "incorrectButton": "No Acertado",
+      "turnButton": "Turno del equipo",
+      "config": {
+        "title": "Configuración",
+        "numTeams": "Número de equipos:",
+        "timeDuration": "Duración del tiempo (segundos):",
+        "numMovies": "Cantidad de películas:",
+        "language": "Idioma:",
+        "apply": "Aplicar Cambios",
+        "cancel": "Cancelar",
+        "help": "Ayuda"
+      },
+      "helpText": "Aquí van las instrucciones en español..."
     }
-}
+    // Afegeix altres idiomes segons calgui
+  }
+  
