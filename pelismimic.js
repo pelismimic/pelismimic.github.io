@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setLanguage(lang) {
         currentLang = lang;
-        document.cookie = `language=${lang};path=/;SameSite=None;Secure`;
+        const expiryDate = new Date();
+        expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+        document.cookie = `language=${lang};expires=${expiryDate.toUTCString()};path=/;SameSite=Lax;Secure`;
         translatePage();
     }
 
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fetchTranslations() {
-        fetch('https://pelismimic.github.io/translations.json')
+        fetch('https://pelismimic.github.io/tranduccions.json')
             .then(response => response.json())
             .then(data => {
                 translations = data;
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fetchMovies() {
-        fetch('https://pelismimic.github.io/movies.json')
+        fetch('https://pelismimic.github.io/pelicules.json')
             .then(response => response.json())
             .then(data => {
                 movieList = data;
