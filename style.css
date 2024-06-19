@@ -1,131 +1,126 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 20px;
+    background-color: #f9f9f9;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
     text-align: center;
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 h1 {
     margin-bottom: 20px;
 }
 
-button {
+.buttons {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.buttons button {
+    margin: 5px;
     padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
 }
 
-button.hidden {
-    display: none;
-}
-
-button.config-button {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 10px auto;
-    border: 2px solid #ccc;
-    background-color: #e9ecef;
-}
-
-.config {
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-.config label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-.config select, .config button {
-    margin: 5px 0;
-}
-
-.config.hidden {
-    display: none;
-}
-
-#scores {
+.scores {
     display: flex;
     justify-content: space-around;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .score {
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 10px;
     width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 24px;
-    border: 3px solid transparent;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.5em;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-#team1 {
-    color: #3498db;
-}
-
-#team2 {
-    color: #9b59b6;
-}
-
-#team3 {
-    color: #e67e22;
-}
-
-#team4 {
-    color: #e91e63;
-}
-
-.modal {
+.hidden {
     display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+#config, #helpModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 300px;
+}
+
+#config label, #config select {
+    display: block;
+    margin-bottom: 10px;
     text-align: left;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#config button {
+    margin-top: 10px;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+#helpText {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#countdown {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#modifyConfigButton, #helpButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+#modifyConfigButton, #helpButton {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 5px;
+}
+
+#turnButton, #revealButton, #startButton, #endButton, #correctButton, #incorrectButton {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1em;
+}
+
+button {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-button#closeButton {
-    background-color: #e9ecef;
-    border: 2px solid #ccc;
+button:hover {
+    background-color: #e9e9e9;
+}
+
+button:active {
+    background-color: #d9d9d9;
+}
+
+button:focus {
+    outline: none;
 }
