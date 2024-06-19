@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fetchTranslations() {
-        fetch('https://pelismimic.github.io/tranduccions.json')
+        fetch('https://pelismimic.github.io/traduccions.json')
             .then(response => response.json())
             .then(data => {
                 translations = data;
