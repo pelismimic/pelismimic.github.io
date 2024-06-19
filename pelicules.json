@@ -1,11 +1,58 @@
-[
-    "El Padrí",
-    "Forrest Gump",
-    "Titanic",
-    "Gladiator",
-    "Matrix",
-    "Top Gun",
-    "Rocky",
-    "Rambo",
-    "Conan el Bàrbar"
-]
+{
+    "movies": [
+        {
+            "ca": "El Padrí",
+            "es": "El Padrino",
+            "en": "The Godfather",
+            "fr": "Le Parrain"
+        },
+        {
+            "ca": "Forrest Gump",
+            "es": "Forrest Gump",
+            "en": "Forrest Gump",
+            "fr": "Forrest Gump"
+        },
+        {
+            "ca": "El Senyor dels Anells",
+            "es": "El Señor de los Anillos",
+            "en": "The Lord of the Rings",
+            "fr": "Le Seigneur des Anneaux"
+        },
+        {
+            "ca": "Titanic",
+            "es": "Titanic",
+            "en": "Titanic",
+            "fr": "Titanic"
+        },
+        {
+            "ca": "Gladiator",
+            "es": "Gladiator",
+            "en": "Gladiator",
+            "fr": "Gladiator"
+        },
+        {
+            "ca": "Rocky",
+            "es": "Rocky",
+            "en": "Rocky",
+            "fr": "Rocky"
+        },
+        {
+            "ca": "Top Gun",
+            "es": "Top Gun",
+            "en": "Top Gun",
+            "fr": "Top Gun"
+        },
+        {
+            "ca": "Rambo",
+            "es": "Acorralado",
+            "en": "First Blood",
+            "fr": "Premier Sang"
+        },
+        {
+            "ca": "Top Gun",
+            "es": "Top Gun",
+            "en": "Top Gun",
+            "fr": "Top Gun"
+        }
+    ]
+}

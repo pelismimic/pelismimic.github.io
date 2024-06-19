@@ -18,7 +18,9 @@
         "languageLabel": "Idioma:",
         "helpText": "Instruccions del joc...",
         "catalan": "Català",
-        "spanish": "Castellà"
+        "spanish": "Castellà",
+        "english": "Anglès",
+        "french": "Francès"
     },
     "es": {
         "title": "Películas y Mímica",
@@ -39,6 +41,54 @@
         "languageLabel": "Idioma:",
         "helpText": "Instrucciones del juego...",
         "catalan": "Catalán",
-        "spanish": "Castellano"
+        "spanish": "Castellano",
+        "english": "Inglés",
+        "french": "Francés"
+    },
+    "en": {
+        "title": "Movies and Mimicry",
+        "modifyConfigButton": "Modify Configuration",
+        "helpButton": "Help",
+        "turnButton": "Team's Turn",
+        "revealButton": "Reveal Movie",
+        "startButton": "Start Countdown",
+        "endButton": "End",
+        "correctButton": "Add 1 Point",
+        "incorrectButton": "Not Correct",
+        "configTitle": "Configuration",
+        "numTeamsLabel": "Number of teams:",
+        "timeDurationLabel": "Time duration (seconds):",
+        "numMoviesLabel": "Number of movies:",
+        "applyConfigButton": "Apply",
+        "cancelConfigButton": "Cancel",
+        "languageLabel": "Language:",
+        "helpText": "Game instructions...",
+        "catalan": "Catalan",
+        "spanish": "Spanish",
+        "english": "English",
+        "french": "French"
+    },
+    "fr": {
+        "title": "Films et Mimes",
+        "modifyConfigButton": "Modifier la Configuration",
+        "helpButton": "Aide",
+        "turnButton": "Tour de l'équipe",
+        "revealButton": "Révéler le Film",
+        "startButton": "Commencer le Compte à Rebours",
+        "endButton": "Terminer",
+        "correctButton": "Ajouter 1 Point",
+        "incorrectButton": "Pas Correct",
+        "configTitle": "Configuration",
+        "numTeamsLabel": "Nombre d'équipes:",
+        "timeDurationLabel": "Durée du temps (secondes):",
+        "numMoviesLabel": "Nombre de films:",
+        "applyConfigButton": "Appliquer",
+        "cancelConfigButton": "Annuler",
+        "languageLabel": "Langue:",
+        "helpText": "Instructions du jeu...",
+        "catalan": "Catalan",
+        "spanish": "Espagnol",
+        "english": "Anglais",
+        "french": "Français"
     }
 }
