@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.textContent = translations[currentLang][key];
             }
         });
+        // Set language options
+        document.querySelector('option[value="ca"]').textContent = translations[currentLang]['catalan'];
+        document.querySelector('option[value="es"]').textContent = translations[currentLang]['spanish'];
     }
 
     function fetchTranslations() {

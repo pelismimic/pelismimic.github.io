@@ -126,3 +126,68 @@ button.team4 {
     background-color: pink;
     color: white;
 }
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.score {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+#config, #helpModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-buttons {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Equips colors */
+.team1 { background-color: rgba(0, 0, 255, 0.2); }
+.team2 { background-color: rgba(128, 0, 128, 0.2); }
+.team3 { background-color: rgba(255, 165, 0, 0.2); }
+.team4 { background-color: rgba(255, 192, 203, 0.2); }
+
+button.team1 { border: 2px solid blue; }
+button.team2 { border: 2px solid purple; }
+button.team3 { border: 2px solid orange; }
+button.team4 { border: 2px solid pink; }
+
+.spacer {
+    margin: 20px 0;
+}

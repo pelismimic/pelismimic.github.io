@@ -16,7 +16,9 @@
         "applyConfigButton": "Aplicar",
         "cancelConfigButton": "Cancel·lar",
         "languageLabel": "Idioma:",
-        "helpText": "Instruccions del joc..."
+        "helpText": "Instruccions del joc...",
+        "catalan": "Català",
+        "spanish": "Castellà"
     },
     "es": {
         "title": "Películas y Mímica",
@@ -27,7 +29,7 @@
         "startButton": "Comenzar Cuenta Atrás",
         "endButton": "Terminar",
         "correctButton": "Sumar 1 Punto",
-        "incorrectButton": "No Acierto",
+        "incorrectButton": "No Acertado",
         "configTitle": "Configuración",
         "numTeamsLabel": "Número de equipos:",
         "timeDurationLabel": "Duración del tiempo (segundos):",
@@ -35,6 +37,8 @@
         "applyConfigButton": "Aplicar",
         "cancelConfigButton": "Cancelar",
         "languageLabel": "Idioma:",
-        "helpText": "Instrucciones del juego..."
+        "helpText": "Instrucciones del juego...",
+        "catalan": "Catalán",
+        "spanish": "Castellano"
     }
 }
