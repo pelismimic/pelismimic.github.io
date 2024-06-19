@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setLanguage(lang) {
         currentLang = lang;
-        document.cookie = `language=${lang};path=/`;
+        document.cookie = `language=${lang};path=/;SameSite=None;Secure`;
         translatePage();
     }
 
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateScores() {
         for (let i = 1; i <= 4; i++) {
             document.getElementById(`team${i}`).classList.toggle('highlight', i === currentTeam);
+            document.getElementById(`team${i}`).classList.toggle(`team${i}`, i === currentTeam);
         }
     }
 
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTeam = (currentTeam % numTeams) + 1;
         updateScores();
         turnButton.textContent = `${translations[currentLang]['turnButton']} ${currentTeam}`;
+        turnButton.className = `team${currentTeam}`;
     }
 
     function startCountdown(duration) {
@@ -152,18 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
         teamScore.textContent = parseInt(teamScore.textContent) + 1;
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
-        switchTurn();
         turnButton.classList.remove('hidden');
+        movieTitle.classList.add('hidden');
+        switchTurn();
     });
 
     incorrectButton.addEventListener('click', () => {
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
-        switchTurn();
         turnButton.classList.remove('hidden');
+        movieTitle.classList.add('hidden');
+        switchTurn();
     });
 
     fetchTranslations();
     fetchMovies();
-    switchTurn();
 });

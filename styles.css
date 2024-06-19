@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.score {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#config {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#config h2 {
+    margin-top: 0;
+}
+
+#config label {
+    display: block;
+    margin-top: 10px;
+}
+
+#config select {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#config .spacer {
+    margin-top: 20px;
+}
+
+#helpModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#helpModal #helpText {
+    margin-bottom: 20px;
+}
+
+/* Team colors */
+.team1 {
+    background-color: rgba(0, 0, 255, 0.1);
+    border: 2px solid blue;
+}
+
+.team2 {
+    background-color: rgba(128, 0, 128, 0.1);
+    border: 2px solid purple;
+}
+
+.team3 {
+    background-color: rgba(255, 165, 0, 0.1);
+    border: 2px solid orange;
+}
+
+.team4 {
+    background-color: rgba(255, 192, 203, 0.1);
+    border: 2px solid pink;
+}
+
+/* Team button styles */
+button.team1 {
+    background-color: blue;
+    color: white;
+}
+
+button.team2 {
+    background-color: purple;
+    color: white;
+}
+
+button.team3 {
+    background-color: orange;
+    color: white;
+}
+
+button.team4 {
+    background-color: pink;
+    color: white;
+}

@@ -2,45 +2,44 @@
 <html lang="ca">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pel·lícules i Mímica</title>
-    <link rel="stylesheet" href="style.css">
+    <title data-translation-key="title">Pel·lícules i Mímica</title>
+    <link rel="stylesheet" href="https://pelismimic.github.io/styles.css">
 </head>
 <body>
     <div class="container">
         <h1 data-translation-key="title">Pel·lícules i Mímica</h1>
         <div class="scores">
-            <div id="team1" class="score" style="background-color: rgba(0, 0, 255, 0.1);">0</div>
-            <div id="team2" class="score" style="background-color: rgba(128, 0, 128, 0.1);">0</div>
-            <div id="team3" class="score" style="background-color: rgba(255, 165, 0, 0.1);">0</div>
-            <div id="team4" class="score" style="background-color: rgba(255, 192, 203, 0.1);">0</div>
+            <div id="team1" class="score">0</div>
+            <div id="team2" class="score">0</div>
+            <div id="team3" class="score hidden">0</div>
+            <div id="team4" class="score hidden">0</div>
         </div>
-        <div id="turnButton" class="hidden" data-translation-key="turnButton"></div>
-        <div id="movieTitle" class="hidden"></div>
+        <button id="modifyConfigButton" data-translation-key="modifyConfigButton">Modificar Configuració</button>
+        <button id="helpButton" data-translation-key="helpButton">Ajuda</button>
+        <button id="turnButton" class="hidden"></button>
+        <button id="revealButton" class="hidden" data-translation-key="revealButton">Revelar Pel·lícula</button>
+        <button id="startButton" class="hidden" data-translation-key="startButton">Començar Compte Enrere</button>
+        <button id="endButton" class="hidden" data-translation-key="endButton">Acabar</button>
+        <button id="correctButton" class="hidden" data-translation-key="correctButton">Sumar 1 Punt</button>
+        <button id="incorrectButton" class="hidden" data-translation-key="incorrectButton">No Acertat</button>
         <div id="countdown" class="hidden"></div>
-        <button id="revealButton" class="hidden" data-translation-key="revealButton"></button>
-        <button id="startButton" class="hidden" data-translation-key="startButton"></button>
-        <button id="endButton" class="hidden" data-translation-key="endButton"></button>
-        <button id="correctButton" class="hidden" style="background-color: green;" data-translation-key="correctButton"></button>
-        <button id="incorrectButton" class="hidden" style="background-color: red;" data-translation-key="incorrectButton"></button>
-        <button id="modifyConfigButton" data-translation-key="config.modify"></button>
-        <button id="helpButton" data-translation-key="config.help"></button>
+        <div id="movieTitle" class="hidden"></div>
         <div id="config" class="hidden">
-            <h2 data-translation-key="config.title"></h2>
-            <label for="numTeams" data-translation-key="config.numTeams"></label>
+            <h2 data-translation-key="configTitle">Configuració</h2>
+            <label for="numTeams" data-translation-key="numTeamsLabel">Nombre d'equips:</label>
             <select id="numTeams">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <label for="timeDuration" data-translation-key="config.timeDuration"></label>
+            <label for="timeDuration" data-translation-key="timeDurationLabel">Durada del temps (segons):</label>
             <select id="timeDuration">
                 <option value="10">10</option>
                 <option value="60">60</option>
                 <option value="90">90</option>
                 <option value="120">120</option>
             </select>
-            <label for="numMovies" data-translation-key="config.numMovies"></label>
+            <label for="numMovies" data-translation-key="numMoviesLabel">Nombre de pel·lícules:</label>
             <select id="numMovies">
                 <option value="4">4</option>
                 <option value="5">5</option>
@@ -50,19 +49,20 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <label for="languageSelect" data-translation-key="config.language"></label>
+            <label for="languageSelect" data-translation-key="languageLabel">Idioma:</label>
             <select id="languageSelect">
                 <option value="ca">Català</option>
                 <option value="es">Castellà</option>
             </select>
-            <button id="applyConfigButton" data-translation-key="config.apply"></button>
-            <button id="cancelConfigButton" data-translation-key="config.cancel"></button>
+            <div class="spacer"></div>
+            <button id="applyConfigButton" data-translation-key="applyConfigButton">Aplicar</button>
+            <button id="cancelConfigButton" data-translation-key="cancelConfigButton">Cancel·lar</button>
         </div>
         <div id="helpModal" class="hidden">
-            <div id="helpText" data-translation-key="help.text"></div>
-            <button id="closeButton" data-translation-key="config.help"></button>
+            <div id="helpText" data-translation-key="helpText">Instruccions del joc...</div>
+            <button id="closeButton" data-translation-key="closeButton">Tancar</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="https://pelismimic.github.io/script.js"></script>
 </body>
 </html>
