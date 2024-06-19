@@ -1,88 +1,93 @@
-/* Estils per a l'aplicació Pel·lícules i Mímica */
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f8f9fa;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 .container {
     max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
+    margin: 0 auto;
     text-align: center;
 }
 
-.scores {
-    display: flex;
-    justify-content: space-between;
+h1 {
     margin-bottom: 20px;
 }
 
-.score {
-    padding: 10px;
-    border: 2px solid transparent;
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
     border-radius: 5px;
 }
 
-.large-button {
+button.hidden {
+    display: none;
+}
+
+button.config-button {
     display: block;
     width: 100%;
     max-width: 300px;
     margin: 10px auto;
-    padding: 15px;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: #fff;
-    transition: background-color 0.3s;
+    border: 2px solid #ccc;
+    background-color: #e9ecef;
 }
 
-.large-button:hover {
-    background-color: #0056b3;
+.config {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
 }
 
-.hidden {
+.config label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.config select, .config button {
+    margin: 5px 0;
+}
+
+.config.hidden {
     display: none;
 }
 
-/* Configuració */
-
-.config-section {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+#scores {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
-.config-options {
-    margin-bottom: 10px;
+.score {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.config-options label {
-    display: inline-block;
-    width: 180px;
+#team1 {
+    color: #3498db;
 }
 
-.config-buttons {
-    margin-top: 20px;
+#team2 {
+    color: #9b59b6;
 }
 
-.config-buttons button {
-    margin-right: 10px;
+#team3 {
+    color: #e67e22;
 }
 
-/* Finestra Modal d'Ajuda */
+#team4 {
+    color: #e91e63;
+}
 
 .modal {
     display: none;
@@ -102,32 +107,25 @@ h1 {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    position: relative;
+    max-width: 500px;
+    text-align: left;
 }
 
-.close-button {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.close-button:hover,
-.close-button:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Resposta i altres estils */
-
-@media (max-width: 600px) {
-    .config-options label {
-        width: 100%;
-        display: block;
-        margin-bottom: 5px;
-    }
+button#closeButton {
+    background-color: #e9ecef;
+    border: 2px solid #ccc;
 }

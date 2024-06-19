@@ -8,28 +8,44 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Pel·lícules i Mímica</h1>
+        <h1 id="title" data-translation-key="title">Pel·lícules i Mímica</h1>
         
-        <button id="modifyConfigButton" data-translation-key="config.modify">Modificar Configuració</button>
-        <button id="helpButton" data-translation-key="config.help">Ajuda</button>
+        <button id="modifyConfigButton" class="config-button" data-translation-key="config.modify">Modificar Configuració</button>
+        <button id="helpButton" class="config-button" data-translation-key="config.help">Ajuda</button>
         
-        <div id="configSection" class="config hidden">
+        <div id="scores">
+            <div id="team1" class="score" style="background-color: rgba(52, 152, 219, 0.1);">0</div>
+            <div id="team2" class="score" style="background-color: rgba(155, 89, 182, 0.1);">0</div>
+            <div id="team3" class="score" style="background-color: rgba(230, 126, 34, 0.1);">0</div>
+            <div id="team4" class="score" style="background-color: rgba(233, 30, 99, 0.1);">0</div>
+        </div>
+        
+        <button id="turnButton" class="hidden" data-translation-key="turnButton">Torn de l'equip</button>
+        <button id="revealButton" class="hidden" data-translation-key="revealButton">Revelar Pel·lícula</button>
+        <div id="movieTitle" class="hidden"></div>
+        <div id="countdown"></div>
+        <button id="startButton" class="hidden" data-translation-key="startButton">Començar</button>
+        <button id="endButton" class="hidden" data-translation-key="endButton">Acabar i Sumar Punt</button>
+        <button id="correctButton" class="hidden" style="background-color: green;" data-translation-key="correctButton">Sumar 1 Punt</button>
+        <button id="incorrectButton" class="hidden" style="background-color: red;" data-translation-key="incorrectButton">No Acertat</button>
+        
+        <div id="config" class="config hidden">
             <h2 id="configTitle" data-translation-key="config.title">Configuració</h2>
-            <label id="numTeamsLabel" for="numTeamsSelect" data-translation-key="config.numTeams">Nombre d'equips:</label>
-            <select id="numTeamsSelect">
+            <label for="numTeams" id="numTeamsLabel" data-translation-key="config.numTeams">Nombre d'equips:</label>
+            <select id="numTeams">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <label id="timeDurationLabel" for="timeDurationSelect" data-translation-key="config.timeDuration">Durada del temps (segons):</label>
-            <select id="timeDurationSelect">
+            <label for="timeDuration" id="timeDurationLabel" data-translation-key="config.timeDuration">Durada del temps (segons):</label>
+            <select id="timeDuration">
                 <option value="10">10</option>
                 <option value="60">60</option>
                 <option value="90">90</option>
                 <option value="120">120</option>
             </select>
-            <label id="numMoviesLabel" for="numMoviesSelect" data-translation-key="config.numMovies">Quantitat de pel·lícules:</label>
-            <select id="numMoviesSelect">
+            <label for="numMovies" id="numMoviesLabel" data-translation-key="config.numMovies">Quantitat de pel·lícules:</label>
+            <select id="numMovies">
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
@@ -38,10 +54,10 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <label id="languageLabel" for="languageSelect" data-translation-key="config.language">Idioma:</label>
+            <label for="languageSelect" id="languageLabel" data-translation-key="config.language">Idioma:</label>
             <select id="languageSelect">
                 <option value="ca">Català</option>
-                <option value="es">Español</option>
+                <option value="es">Castellà</option>
             </select>
             <button id="applyConfigButton" data-translation-key="config.apply">Aplicar Canvis</button>
             <button id="cancelConfigButton" data-translation-key="config.cancel">Cancel·lar</button>
@@ -53,25 +69,7 @@
                 <p id="helpText"></p>
             </div>
         </div>
-
-        <button id="turnButton" class="hidden" data-translation-key="turnButton">Torn de l'equip</button>
-        <button id="revealButton" class="hidden" data-translation-key="revealButton">Revelar Pel·lícula</button>
-        <button id="startButton" class="hidden" data-translation-key="startButton">Començar</button>
-        <button id="endButton" class="hidden" data-translation-key="endButton">Acabar i Sumar Punt</button>
-        <button id="correctButton" class="hidden" data-translation-key="correctButton">Sumar 1 Punt</button>
-        <button id="incorrectButton" class="hidden" data-translation-key="incorrectButton">No Acertat</button>
-        
-        <h2 id="movieTitle" class="hidden"></h2>
-        <h3 id="countdown" class="hidden"></h3>
-
-        <div id="scores">
-            <div id="team1" class="score">0</div>
-            <div id="team2" class="score">0</div>
-            <div id="team3" class="score hidden">0</div>
-            <div id="team4" class="score hidden">0</div>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
