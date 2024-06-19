@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function switchTeam() {
         currentTeam = currentTeam < numTeams ? currentTeam + 1 : 1;
         updateTeamColors();
+        showTurnButton();
     }
 
     // Funció per actualitzar els colors dels equips
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener pel botó de revelar pel·lícula
     revealButton.addEventListener('click', () => {
         if (movieList.length > 0) {
-            currentTitle = movieList[Math.floor(Math.random() * movieList.length)];
+            const currentTitle = movieList[Math.floor(Math.random() * movieList.length)];
             movieTitle.textContent = currentTitle;
             movieTitle.classList.remove('hidden');
             revealButton.classList.add('hidden');
@@ -92,30 +93,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event listener pel botó d'acabar
     endButton.addEventListener('click', () => {
-        clearInterval(timer);
-        countdown.classList.add('hidden');
-        movieTitle.classList.add('hidden');
+        // No cal clearInterval(timer) aquí, perquè el temporitzador ja s'atura quan timeLeft <= 0
+        countdown.textContent = "Temps acabat!";
         endButton.classList.add('hidden');
-        revealButton.classList.remove('hidden');
-
-        // Sumar punt a l'equip actual
-        const scores = document.querySelectorAll('.score');
-        scores[currentTeam - 1].textContent = parseInt(scores[currentTeam - 1].textContent) + 1;
-
-        // Canviar a l'equip següent
-        switchTeam();
-        showTurnButton();
+        movieTitle.classList.add('hidden');
+        correctButton.classList.remove('hidden');
+        incorrectButton.classList.remove('hidden');
+        new Audio('https://pelismimic.github.io/sirena.mp3').play();
     });
 
-    // Event listener pel botó de sumar 1 punt
+    // Event listener pel botó de sumar punt
     correctButton.addEventListener('click', () => {
-        // Sumar punt a l'equip actual
-        const scores = document.querySelectorAll('.score');
-        scores[currentTeam - 1].textContent = parseInt(scores[currentTeam - 1].textContent) + 1;
+        const teamScore = document.getElementById(`team${currentTeam}`);
+        teamScore.textContent = parseInt(teamScore.textContent) + 1;
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
         switchTeam();
-        showTurnButton();
     });
 
     // Event listener pel botó de no acertat
@@ -123,53 +116,16 @@ document.addEventListener('DOMContentLoaded', function () {
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
         switchTeam();
-        showTurnButton();
     });
 
-    // Event listener pel botó de modificar configuració
-    document.getElementById('modifyConfigButton').addEventListener('click', () => {
-        configSection.classList.toggle('hidden');
-    });
-
-    // Event listener pel botó d'aplicar configuració
-    applyConfigButton.addEventListener('click', () => {
-        numTeams = parseInt(numTeamsSelect.value);
-        timeDuration = parseInt(timeDurationSelect.value);
-        const numMovies = parseInt(numMoviesSelect.value);
-        currentLang = languageSelect.value;
-        applyTranslations();
-
-        // Guardar l'idioma seleccionat en una cookie
-        setCookie('language', currentLang, 365);
-
-        configSection.classList.add('hidden');
-
-        // Reiniciar marcadors
-        const scores = document.querySelectorAll('.score');
-        scores.forEach(score => score.textContent = "0");
-
-        // Mostrar/ocultar equips segons la configuració
-        const teams = document.querySelectorAll('.score');
-        teams.forEach((team, index) => {
-            if (index < numTeams) {
-                team.classList.remove('hidden');
-            } else {
-                team.classList.add('hidden');
-            }
-        });
-
-        currentTeam = 1;
-        showTurnButton();
-    });
-
-    // Event listener pel botó de cancel·lar configuració
-    cancelConfigButton.addEventListener('click', () => {
-        configSection.classList.add('hidden');
+    // Event listener pel botó de torn
+    turnButton.addEventListener('click', () => {
+        turnButton.classList.add('hidden');
+        revealButton.classList.remove('hidden');
     });
 
     // Event listener pel botó d'ajuda
     helpButton.addEventListener('click', () => {
-        helpText.textContent = translations[currentLang].helpText;
         helpModal.classList.remove('hidden');
     });
 
@@ -210,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('languageLabel').textContent = translations[currentLang].config.language;
         applyConfigButton.textContent = translations[currentLang].config.apply;
         cancelConfigButton.textContent = translations[currentLang].config.cancel;
-        helpButton.textContent = translations[currentLang].config.help;
+        helpText.textContent = translations[currentLang].helpText; // Afegit per les instruccions d'ajuda
     }
 
     // Funció per obtenir una cookie per nom
@@ -242,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Funció per carregar les traduccions des del fitxer JSON
     function loadTranslations() {
-        fetch('translations.json')
+        fetch('https://pelismimic.github.io/translations.json')
             .then(response => response.json())
             .then(data => {
                 translations = data;
@@ -258,17 +214,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-    // Funció per carregar les traduccions des del fitxer JSON
+    // Funció per carregar les pel·lícules des del fitxer JSON
     function fetchMovies() {
         fetch('https://pelismimic.github.io/movies.json')
-        .then(response => response.json())
-        .then(data => {
-            movieList = data;
-        })
-        .catch(error => {
-            console.error('Error carregant les pel·lícules:', error);
-            alert('Error carregant les pel·lícules.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                movieList = data.movies;
+            })
+            .catch(error => {
+                console.error('Error carregant les pel·lícules:', error);
+                alert('Error carregant les pel·lícules.');
+            });
     }
 
     // Iniciar l'aplicació
