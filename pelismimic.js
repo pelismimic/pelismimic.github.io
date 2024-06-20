@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function conmutaAjuda(show) {
         AjudaModal.classList.toggle('hidden', !show);
-
+        AjudaBoto.classList.toggle('hidden', !show);
     }
 
     function updateScores() {

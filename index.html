@@ -28,6 +28,7 @@
         <div id="movieTitle" class="hidden"></div>
         <div id="configModal" class="hidden">
             <h2 data-translation-key="configTitle">Configuració</h2>
+            <div class="config-content">
             <label for="numTeams" data-translation-key="numTeamsLabel">Nombre d'equips:</label>
             <select id="numTeams">
                 <option value="2">2</option>
@@ -58,12 +59,16 @@
                 <option value="en" data-translation-key="English">English</option>
                 <option value="fr" data-translation-key="Français">Français</option>
             </select>
+            </div>
             <div class="spacer"></div>
+            <div class="config-buttons">
             <button id="applyConfigButton" class="standard-button" data-translation-key="applyConfigButton">Aplicar</button>
             <button id="cancelConfigButton" class="standard-button" data-translation-key="cancelConfigButton">Cancel·lar</button>
+            </div>
         </div>
-        <div id="AjudaModal" class="hidden">
-            <div id="AjudaText" class="standard-button" data-translation-key="AjudaText">Instruccions del joc...</div>
+        <div id="AjudaModal"><!-- class="hidden"> -->
+            <div id="AjudaText" data-translation-key="AjudaText">Instruccions del joc...</div>
+            hola hoa hola
             <button id="closeAjudaBoto" class="standard-button" data-translation-key="closeBoto">Tancar</button>
         </div>
     </div>

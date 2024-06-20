@@ -66,6 +66,7 @@ button {
     transform: translate(-50%, -50%); 
     background: #f0f0f0; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    align-items: center;
 }
 
 #configModal h2 {
