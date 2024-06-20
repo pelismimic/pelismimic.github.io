@@ -151,7 +151,7 @@ button {
 }
 
 /* Botons estandard */
-.standard-boto {
+.boto-estandar {
     width: 150px;
     height: 44px;
     font-size: 16px;
@@ -159,7 +159,7 @@ button {
     margin: 5px;
 }
 
-.standard-large-boto {
+.boto-estandar-llarg {
     width: 250px;
 }
 

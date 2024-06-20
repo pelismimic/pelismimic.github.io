@@ -9,41 +9,41 @@
 </head>
 <body>
     <div id="app">
-        <h1 data-translation-key="title">Pel·lícules i Mímica</h1>
+        <h1 data-translation-key="titol_i18n">Pel·lícules i Mímica</h1>
         <div class="scores">
             <div id="team1" class="score team1">0</div>
             <div id="team2" class="score team2">0</div>
             <div id="team3" class="score hidden">0</div>
             <div id="team4" class="score hidden">0</div>
         </div>
-        <div id="turnMessage" class="message standard-large-boto" data-translation-key="turnMessage"></div>
+        <div id="turnMessage" class="message boto-estandar-llarg" data-translation-key="turnMessage"></div>
 		<div id="controls">
-        <button id="revealButton" class="hidden standard-boto standard-large-boto" data-translation-key="revealButton">Revelar Pel·lícula</button>
-        <button id="startButton" class="hidden standard-boto standard-large-boto" data-translation-key="startButton">Començar Compte Enrere</button>
-        <button id="endButton" class="hidden standard-boto standard-large-boto" data-translation-key="endButton">Acabar</button>
-        <button id="correctButton" class="hidden standard-boto standard-large-boto" data-translation-key="correctButton">Sumar 1 Punt</button>
-        <button id="incorrectButton" class="hidden standard-boto standard-large-boto" data-translation-key="incorrectButton">No Acertat</button>
+        <button id="revealButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="revealButton">Revelar Pel·lícula</button>
+        <button id="startButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="startButton">Començar Compte Enrere</button>
+        <button id="endButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="endButton">Acabar</button>
+        <button id="correctButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="correctButton">Sumar 1 Punt</button>
+        <button id="incorrectButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="incorrectButton">No Acertat</button>
         </div>
-        <div id="countdown" class="hidden"></div>
+        <div id="compteEnrera" class="hidden"></div>
         <div id="movieTitle" class="hidden"></div>
         <div id="configuracioModal" class="hidden">
-            <h2 data-translation-key="configTitle">Configuració</h2>
+            <h2 data-translation-key="titolConfiguracio_i18n">Configuració</h2>
             <div class="configuracio-content">
-            <label for="numTeams" data-translation-key="numTeamsLabel">Nombre d'equips:</label>
-            <select id="numTeams">
+            <label for="nombreEquips" data-translation-key="etiquetaNombreEquips_i18n">Nombre d'equips:</label>
+            <select id="nombreEquips">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <label for="timeDuration" data-translation-key="timeDurationLabel">Durada del temps (segons):</label>
+            <label for="timeDuration" data-translation-key="etiquetaTempsRespondre_i18n">Durada del temps (segons):</label>
             <select id="timeDuration">
                 <option value="10">10</option>
                 <option value="60">60</option>
                 <option value="90">90</option>
                 <option value="120">120</option>
             </select>
-            <label for="numMovies" data-translation-key="numMoviesLabel">Nombre de pel·lícules:</label>
-            <select id="numMovies">
+            <label for="nombrePelicules" data-translation-key="nombrePelicules_i18n">Nombre de pel·lícules:</label>
+            <select id="nombrePelicules">
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
@@ -52,29 +52,30 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <label for="languageSelect" data-translation-key="languageLabel">Idioma:</label>
-            <select id="languageSelect">
-                <option value="ca" data-translation-key="catalan">Català</option>
-                <option value="es" data-translation-key="spanish">Castellano</option>
-                <option value="en" data-translation-key="English">English</option>
-                <option value="fr" data-translation-key="Français">Français</option>
+            <label for="selectorIdioma" data-translation-key="etiquetaIdioma_i18n">Idioma:</label>
+            <select id="selectorIdioma">
+                <option value="ca" data-translation-key="catala_i18n">Català</option>
+                <option value="es" data-translation-key="castella_i18n">Castellano</option>
+                <option value="en" data-translation-key="angles_i18n">EnglishAngles</option>
+                <option value="fr" data-translation-key="frances_i18n">Français</option>
             </select>
             </div>
             <div class="spacer"></div>
             <div class="configuracio-botons">
-            <button id="applyConfigButton" class="standard-boto" data-translation-key="applyConfigButton">Aplicar</button>
-            <button id="cancelConfigButton" class="standard-boto" data-translation-key="cancelConfigButton">Cancel·lar</button>
+            <button id="botoModifConfig" class="boto-estandar" data-translation-key="botoModifConfig_i18n">Aplicar</button>
+            <button id="botoCancelConfig" class="boto-estandar" data-translation-key="botoCancelar">Cancel·lar</button>
             </div>
         </div>
         <div id="AjudaModal"><!-- class="hidden"> -->
-            <div id="AjudaText" data-translation-key="AjudaText">Instruccions del joc...</div>
+            <div id="AjudaText" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
             hola hoa hola
-            <button id="closeAjudaBoto" class="standard-boto" data-translation-key="closeBoto">Tancar</button>
+            <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
         </div>
+        
     </div>
     <div class="bottom-botons">
-        <button id="modifyConfigButton" class="standard-boto" data-translation-key="modifyConfigButton">Configuració</button>
-        <button id="AjudaBoto" class="standard-boto" data-translation-key="AjudaBoto">Ajuda</button>
+        <button id="botoConfiguracio" class="boto-estandar" data-translation-key="botoConfiguracio_i18n">Configuració</button>
+        <button id="botoAjuda" class="boto-estandar" data-translation-key="botoAjuda_i18n">Ajuda</button>
     </div>
 </div>
 <!-- <script src="https://pelismimic.github.io/pelismimic.js"></script> -->

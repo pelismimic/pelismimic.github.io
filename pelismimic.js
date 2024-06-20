@@ -2,27 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     let translations = {};
     let movieList = [];
     let currentLang = 'ca';
-    let currentTeam = 1;
-    let numTeams = 2;
-    let countdownTimer;
+    let equipActual = 1;
+    let nombreEquips = 2;
+    let compteEnreraTimer;
 
-    const modifyConfigButton = document.getElementById('modifyConfigButton');
-    const AjudaBoto = document.getElementById('AjudaBoto');
-    const closeButton = document.getElementById('closeButton');
-    const applyConfigButton = document.getElementById('applyConfigButton');
-    const cancelConfigButton = document.getElementById('cancelConfigButton');
+    const botoConfiguracio = document.getElementById('botoConfiguracio');
+    const botoAjuda = document.getElementById('botoAjuda');
+    const botoTancarAjuda = document.getElementById('botoTancarAjuda');
+    const botoModifConfig = document.getElementById('botoModifConfig');
+    const botoCancelConfig = document.getElementById('botoCancelConfig');
     const turnMessage = document.getElementById('turnMessage');
     const revealButton = document.getElementById('revealButton');
     const startButton = document.getElementById('startButton');
     const endButton = document.getElementById('endButton');
     const correctButton = document.getElementById('correctButton');
     const incorrectButton = document.getElementById('incorrectButton');
-    const countdown = document.getElementById('countdown');
+    const compteEnrera = document.getElementById('compteEnrera');
     const movieTitle = document.getElementById('movieTitle');
-    const languageSelect = document.getElementById('languageSelect');
-    const numTeamsSelect = document.getElementById('numTeams');
+    const selectorIdioma = document.getElementById('selectorIdioma');
+    const nombreEquipsSelect = document.getElementById('nombreEquips');
     const timeDurationSelect = document.getElementById('timeDuration');
-    const numMoviesSelect = document.getElementById('numMovies');
+    const nombrePeliculesSelect = document.getElementById('nombrePelicules');
     const config = document.getElementById('config');
     const AjudaModal = document.getElementById('AjudaModal');
     const AjudaText = document.getElementById('AjudaText');
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         // Set language options
-        document.querySelector('option[value="ca"]').textContent = translations[currentLang]['catalan'];
-        document.querySelector('option[value="es"]').textContent = translations[currentLang]['spanish'];
-        document.querySelector('option[value="en"]').textContent = translations[currentLang]['english'];
+        document.querySelector('option[value="ca"]').textContent = translations[currentLang]['catala'];
+        document.querySelector('option[value="es"]').textContent = translations[currentLang]['castella'];
+        document.querySelector('option[value="en"]').textContent = translations[currentLang]['Angles'];
         document.querySelector('option[value="fr"]').textContent = translations[currentLang]['french'];    
     }
 
@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fetchTranslations() {
-        fetch('https://pelismimic.github.io/traduccions.json')
+        //fetch('https://pelismimic.github.io/traduccions.json')
+        fetch('./traduccions.json')
             .then(response => response.json())
             .then(data => {
                 translations = data;
@@ -76,41 +77,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function conmutaConfiguracio(show) {
         configuracioModal.classList.toggle('hidden', !show);
-        modifyConfigButton.classList.toggle('hidden', show);
-        AjudaBoto.classList.toggle('hidden', show);
+        botoConfiguracio.classList.toggle('hidden', show);
+        botoAjuda.classList.toggle('hidden', show);
     }
+
 
     function conmutaAjuda(show) {
         AjudaModal.classList.toggle('hidden', !show);
-        AjudaBoto.classList.toggle('hidden', !show);
+        botoConfiguracio.classList.toggle('hidden', show);
+        botoAjuda.classList.toggle('hidden', show);
     }
 
     function updateScores() {
         for (let i = 1; i <= 4; i++) {
-            document.getElementById(`team${i}`).classList.toggle('highlight', i === currentTeam);
-            document.getElementById(`team${i}`).classList.toggle(`team${i}`, i === currentTeam);
+            document.getElementById(`team${i}`).classList.toggle('highlight', i === equipActual);
+            document.getElementById(`team${i}`).classList.toggle(`team${i}`, i === equipActual);
         }
     }
 
-    function switchTurn() {
-        currentTeam = (currentTeam % numTeams) + 1;
+    function canviaTorn() {
+        equipActual = (equipActual % nombreEquips) + 1;
         updateScores();
-        turnMessage.textContent = `Torn de l'equip ${currentTeam + 1}`;
-        turnMessage.className = `team${currentTeam}`;
+        turnMessage.textContent = `Torn de l'equip ${equipActual + 1}`;
+        turnMessage.className = `team${equipActual}`;
+    }
+
+    function iniciaPartida() {
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`team${i}`).textContent = "0"
+        }
+        equipActual = nombreEquips;
     }
 
     function startCountdown(duration) {
         let time = duration;
-        countdown.textContent = time;
-        countdown.classList.remove('hidden');
+        compteEnrera.textContent = time;
+        compteEnrera.classList.remove('hidden');
 
-        countdownTimer = setInterval(() => {
+        compteEnreraTimer = setInterval(() => {
             time -= 1;
-            countdown.textContent = time;
+            compteEnrera.textContent = time;
             if (time <= 0) {
-                clearInterval(countdownTimer);
+                clearInterval(compteEnreraTimer);
                 new Audio('https://pelismimic.github.io/sirena.mp3').play();
-                countdown.classList.add('hidden');
+                compteEnrera.classList.add('hidden');
                 endButton.classList.add('hidden');
                 correctButton.classList.remove('hidden');
                 incorrectButton.classList.remove('hidden');
@@ -118,19 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    modifyConfigButton.addEventListener('click', () => conmutaConfiguracio(true));
-    cancelConfigButton.addEventListener('click', () => conmutaConfiguracio(false));
-    applyConfigButton.addEventListener('click', () => {
-        numTeams = parseInt(numTeamsSelect.value);
+    botoConfiguracio.addEventListener('click', () => conmutaConfiguracio(true));
+    botoCancelConfig.addEventListener('click', () => conmutaConfiguracio(false));
+    botoModifConfig.addEventListener('click', () => {
+        nombreEquips = parseInt(nombreEquipsSelect.value);
         const duration = parseInt(timeDurationSelect.value);
-        const numMovies = parseInt(numMoviesSelect.value);
-        setLanguage(languageSelect.value);
+        const nombrePelicules = parseInt(nombrePeliculesSelect.value);
+        setLanguage(selectorIdioma.value);
         conmutaConfiguracio(false);
-        switchTurn();
+        iniciaPartida();
     });
 
-    AjudaBoto.addEventListener('click', () => conmutaAjuda(true));
-    closeAjudaBoto.addEventListener('click', () => conmutaAjuda(false));
+    botoAjuda.addEventListener('click', () => conmutaAjuda(true));
+    botoTancarAjuda.addEventListener('click', () => conmutaAjuda(false));
 
     turnMessage.addEventListener('click', () => {
         //turnButton.classList.add('hidden');
@@ -156,21 +166,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     endButton.addEventListener('click', () => {
-        clearInterval(countdownTimer);
-        countdown.classList.add('hidden');
+        clearInterval(compteEnreraTimer);
+        compteEnrera.classList.add('hidden');
         endButton.classList.add('hidden');
         correctButton.classList.remove('hidden');
         incorrectButton.classList.remove('hidden');
     });
 
     correctButton.addEventListener('click', () => {
-        const teamScore = document.getElementById(`team${currentTeam}`);
+        const teamScore = document.getElementById(`team${equipActual}`);
         teamScore.textContent = parseInt(teamScore.textContent) + 1;
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
         turnMessage.classList.remove('hidden');
         movieTitle.classList.add('hidden');
-        switchTurn();
+        canviaTorn();
     });
 
     incorrectButton.addEventListener('click', () => {
@@ -178,13 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         incorrectButton.classList.add('hidden');
         turnMessage.classList.remove('hidden');
         movieTitle.classList.add('hidden');
-        switchTurn();
+        canviaTorn();
     });
 
     fetchTranslations();
     fetchMovies();
-
-    currentTeam = 0
-    switchTurn();
-
+    iniciaPartida();
 });
