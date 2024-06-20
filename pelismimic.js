@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownTimer;
 
     const modifyConfigButton = document.getElementById('modifyConfigButton');
-    const AjudaButton = document.getElementById('AjudaButton');
+    const AjudaBoto = document.getElementById('AjudaBoto');
     const closeButton = document.getElementById('closeButton');
     const applyConfigButton = document.getElementById('applyConfigButton');
     const cancelConfigButton = document.getElementById('cancelConfigButton');
@@ -75,20 +75,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function conmutaConfig(show) {
-        config.classList.conmuta('hidden', !show);
-        modifyConfigButton.classList.conmuta('hidden', show);
-        AjudaButton.classList.conmuta('hidden', show);
+        configModal.classList.toggle('hidden', !show);
+        modifyConfigButton.classList.toggle('hidden', show);
+        AjudaBoto.classList.toggle('hidden', show);
     }
 
     function conmutaAjuda(show) {
-        AjudaModal.classList.conmuta('hidden', !show);
+        AjudaModal.classList.toggle('hidden', !show);
 
     }
 
     function updateScores() {
         for (let i = 1; i <= 4; i++) {
-            document.getElementById(`team${i}`).classList.conmuta('highlight', i === currentTeam);
-            document.getElementById(`team${i}`).classList.conmuta(`team${i}`, i === currentTeam);
+            document.getElementById(`team${i}`).classList.toggle('highlight', i === currentTeam);
+            document.getElementById(`team${i}`).classList.toggle(`team${i}`, i === currentTeam);
         }
     }
 
@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         switchTurn();
     });
 
-    AjudaButton.addEventListener('click', () => conmutaAjuda(true));
-    closeButton.addEventListener('click', () => conmutaAjuda(false));
+    AjudaBoto.addEventListener('click', () => conmutaAjuda(true));
+    closeAjudaBoto.addEventListener('click', () => conmutaAjuda(false));
 
     turnMessage.addEventListener('click', () => {
         //turnButton.classList.add('hidden');

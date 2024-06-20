@@ -55,7 +55,7 @@ button {
 }
 
 /* Config section */
-#config {
+#configModal {
     background-color: #e0e0e0;
     padding: 20px;
     border-radius: 10px;
@@ -68,21 +68,21 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-#config h2 {
+#configModal h2 {
     margin-top: 0;
 }
 
-#config label {
+#configModal label {
     display: block;
     margin-top: 10px;
 }
 
-#config select {
+#configModal select {
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
-#config .spacer {
+#configModal .spacer {
     margin-top: 20px;
 }
 
