@@ -3,7 +3,7 @@
         "title": "Pel·lícules i Mímica",
         "modifyConfigButton": "Configuració",
         "helpButton": "Ajuda",
-        "turnButton": "Torn de l'equip",
+        "turnMessage": "Torn de l'equip",
         "revealButton": "Revelar Pel·lícula",
         "startButton": "Començar Compte Enrere",
         "endButton": "Acabar",
@@ -18,15 +18,15 @@
         "languageLabel": "Idioma:",
         "helpText": "Instruccions del joc...",
         "catalan": "Català",
-        "spanish": "Castellà",
-        "english": "Anglès",
-        "french": "Francès"
+        "spanish": "Castellano",
+        "english": "English",
+        "french": "Français"
     },
     "es": {
         "title": "Películas y Mímica",
         "modifyConfigButton": "Configuración",
         "helpButton": "Ayuda",
-        "turnButton": "Turno del equipo",
+        "turnMessage": "Turno del equipo",
         "revealButton": "Revelar Película",
         "startButton": "Comenzar Cuenta Atrás",
         "endButton": "Terminar",
@@ -40,16 +40,16 @@
         "cancelConfigButton": "Cancelar",
         "languageLabel": "Idioma:",
         "helpText": "Instrucciones del juego...",
-        "catalan": "Catalán",
+        "catalan": "Català",
         "spanish": "Castellano",
-        "english": "Inglés",
-        "french": "Francés"
+        "english": "English",
+        "french": "Français"
     },
     "en": {
         "title": "Movies and Mimicry",
         "modifyConfigButton": "Configuration",
         "helpButton": "Help",
-        "turnButton": "Team's Turn",
+        "turnMessage": "Team's Turn",
         "revealButton": "Reveal Movie",
         "startButton": "Start Countdown",
         "endButton": "End",
@@ -63,16 +63,16 @@
         "cancelConfigButton": "Cancel",
         "languageLabel": "Language:",
         "helpText": "Game instructions...",
-        "catalan": "Catalan",
-        "spanish": "Spanish",
+        "catalan": "Català",
+        "spanish": "Castellano",
         "english": "English",
-        "french": "French"
+        "french": "Français"
     },
     "fr": {
         "title": "Films et Mimes",
         "modifyConfigButton": "Configuration",
         "helpButton": "Aide",
-        "turnButton": "Tour de l'équipe",
+        "turnMessage": "Tour de l'équipe",
         "revealButton": "Révéler le Film",
         "startButton": "Commencer le Compte à Rebours",
         "endButton": "Terminer",
@@ -86,9 +86,9 @@
         "cancelConfigButton": "Annuler",
         "languageLabel": "Langue:",
         "helpText": "Instructions du jeu...",
-        "catalan": "Catalan",
-        "spanish": "Espagnol",
-        "english": "Anglais",
+        "catalan": "Català",
+        "spanish": "Castellano",
+        "english": "English",
         "french": "Français"
     }
 }
