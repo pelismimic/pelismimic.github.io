@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error carregant les pel·lícules:', error));
     }
 
-    function conmutaConfig(show) {
-        configModal.classList.toggle('hidden', !show);
+    function conmutaConfiguracio(show) {
+        configuracioModal.classList.toggle('hidden', !show);
         modifyConfigButton.classList.toggle('hidden', show);
         AjudaBoto.classList.toggle('hidden', show);
     }
@@ -118,14 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    modifyConfigButton.addEventListener('click', () => conmutaConfig(true));
-    cancelConfigButton.addEventListener('click', () => conmutaConfig(false));
+    modifyConfigButton.addEventListener('click', () => conmutaConfiguracio(true));
+    cancelConfigButton.addEventListener('click', () => conmutaConfiguracio(false));
     applyConfigButton.addEventListener('click', () => {
         numTeams = parseInt(numTeamsSelect.value);
         const duration = parseInt(timeDurationSelect.value);
         const numMovies = parseInt(numMoviesSelect.value);
         setLanguage(languageSelect.value);
-        conmutaConfig(false);
+        conmutaConfiguracio(false);
         switchTurn();
     });
 

@@ -55,7 +55,7 @@ button {
 }
 
 /* Config section */
-#configModal {
+#configuracioModal {
     background-color: #e0e0e0;
     padding: 20px;
     border-radius: 10px;
@@ -66,24 +66,47 @@ button {
     transform: translate(-50%, -50%); 
     background: #f0f0f0; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    align-items: center;
+    z-index: 1000;
+    text-align: center;
 }
 
-#configModal h2 {
+.configuracio-content label, .configuracio-content select {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.configuracio-botons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#configSection h2 {
+    text-align: center;
+}
+
+#configSection label, #configSection input, #configSection select {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+#configuracioModal h2 {
     margin-top: 0;
 }
 
-#configModal label {
+#configuracioModal label {
     display: block;
     margin-top: 10px;
 }
 
-#configModal select {
+#configuracioModal select {
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
-#configModal .spacer {
+#configuracioModal .spacer {
     margin-top: 20px;
 }
 
@@ -128,7 +151,7 @@ button {
 }
 
 /* Botons estandard */
-.standard-button {
+.standard-boto {
     width: 150px;
     height: 44px;
     font-size: 16px;
@@ -136,7 +159,7 @@ button {
     margin: 5px;
 }
 
-.standard-large-button {
+.standard-large-boto {
     width: 250px;
 }
 
@@ -163,7 +186,7 @@ button.team4 {
 }
 
 /* Bottom buttons */
-.bottom-buttons {
+.bottom-botons {
     position: fixed;
     bottom: 20px;
     width: 100%;
