@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownTimer;
 
     const modifyConfigButton = document.getElementById('modifyConfigButton');
-    const helpButton = document.getElementById('helpButton');
+    const AjudaButton = document.getElementById('AjudaButton');
     const closeButton = document.getElementById('closeButton');
     const applyConfigButton = document.getElementById('applyConfigButton');
     const cancelConfigButton = document.getElementById('cancelConfigButton');
-    const turnButton = document.getElementById('turnButton');
+    const turnMessage = document.getElementById('turnMessage');
     const revealButton = document.getElementById('revealButton');
     const startButton = document.getElementById('startButton');
     const endButton = document.getElementById('endButton');
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeDurationSelect = document.getElementById('timeDuration');
     const numMoviesSelect = document.getElementById('numMovies');
     const config = document.getElementById('config');
-    const helpModal = document.getElementById('helpModal');
-    const helpText = document.getElementById('helpText');
+    const AjudaModal = document.getElementById('AjudaModal');
+    const AjudaText = document.getElementById('AjudaText');
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Set language options
         document.querySelector('option[value="ca"]').textContent = translations[currentLang]['catalan'];
         document.querySelector('option[value="es"]').textContent = translations[currentLang]['spanish'];
+        document.querySelector('option[value="en"]').textContent = translations[currentLang]['english'];
+        document.querySelector('option[value="fr"]').textContent = translations[currentLang]['french'];    
+    }
+
+    function loadMovieTitle(movie) {
+        const title = movie[currentLang] || movie['ca'];
+        document.getElementById('movieTitle').textContent = title;
     }
 
     function fetchTranslations() {
@@ -70,11 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleConfig(show) {
         config.classList.toggle('hidden', !show);
         modifyConfigButton.classList.toggle('hidden', show);
-        helpButton.classList.toggle('hidden', show);
+        AjudaButton.classList.toggle('hidden', show);
     }
 
-    function toggleHelp(show) {
-        helpModal.classList.toggle('hidden', !show);
+    function toggleAjuda(show) {
+        AjudaModal.classList.toggle('hidden', !show);
     }
 
     function updateScores() {
@@ -87,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchTurn() {
         currentTeam = (currentTeam % numTeams) + 1;
         updateScores();
-        turnButton.textContent = `${translations[currentLang]['turnButton']} ${currentTeam}`;
-        turnButton.className = `team${currentTeam}`;
+        turnMessage.textContent = `Torn de l'equip ${currentTeam + 1}`;
+        turnMessage.className = `team${currentTeam}`;
     }
 
     function startCountdown(duration) {
@@ -121,23 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
         switchTurn();
     });
 
-    helpButton.addEventListener('click', () => toggleHelp(true));
-    closeButton.addEventListener('click', () => toggleHelp(false));
+    AjudaButton.addEventListener('click', () => toggleAjuda(true));
+    closeButton.addEventListener('click', () => toggleAjuda(false));
 
-    turnButton.addEventListener('click', () => {
-        turnButton.classList.add('hidden');
-        revealButton.classList.remove('hidden');
+    turnMessage.addEventListener('click', () => {
+        //turnButton.classList.add('hidden');
+        //revealButton.classList.remove('hidden');
         startButton.classList.add('hidden');
         endButton.classList.add('hidden');
     });
 
     revealButton.addEventListener('click', () => {
-        const randomIndex = Math.floor(Math.random() * movieList.length);
-        movieTitle.textContent = movieList[randomIndex];
+        currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
+        loadMovieTitle(movieList[currentMovieIndex]);
         movieTitle.classList.remove('hidden');
         revealButton.classList.add('hidden');
         startButton.classList.remove('hidden');
     });
+
 
     startButton.addEventListener('click', () => {
         const duration = parseInt(timeDurationSelect.value);
@@ -159,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         teamScore.textContent = parseInt(teamScore.textContent) + 1;
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
-        turnButton.classList.remove('hidden');
+        turnMessage.classList.remove('hidden');
         movieTitle.classList.add('hidden');
         switchTurn();
     });
@@ -167,11 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
     incorrectButton.addEventListener('click', () => {
         correctButton.classList.add('hidden');
         incorrectButton.classList.add('hidden');
-        turnButton.classList.remove('hidden');
+        turnMessage.classList.remove('hidden');
         movieTitle.classList.add('hidden');
         switchTurn();
     });
 
     fetchTranslations();
     fetchMovies();
+
+    currentTeam = 0
+    switchTurn();
+
 });

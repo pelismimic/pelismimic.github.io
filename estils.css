@@ -9,36 +9,44 @@ body {
     width: 80%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 50px; /* Consolidated */
+    margin-top: 50px; 
+}
+
+.app {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px; 
 }
 
 h1 {
     font-size: 2em;
     margin: 20px 0;
+    text-align: center;
 }
 
 .scores {
     display: flex;
-    justify-content: center; /* Consolidated */
-    gap: 20px; /* Consolidated */
-    margin: 20px 0; /* Consolidated */
+    justify-content: center; 
+    gap: 20px; 
+    margin: 20px 0; 
 }
 
 .score {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px; /* Consolidated */
+    font-size: 20px; 
 }
 
 button {
     display: inline-block;
     padding: 10px 20px;
     margin: 10px 5px;
-    font-size: 1em; /* Consolidated */
+    font-size: 1em; 
     cursor: pointer;
 }
 
@@ -52,12 +60,12 @@ button {
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
-    position: fixed; /* Consolidated */
-    top: 50%; /* Consolidated */
-    left: 50%; /* Consolidated */
-    transform: translate(-50%, -50%); /* Consolidated */
-    background: #f0f0f0; /* Consolidated */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Consolidated */
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background: #f0f0f0; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 #config h2 {
@@ -78,20 +86,20 @@ button {
     margin-top: 20px;
 }
 
-#helpModal {
-    display: none; /* Consolidated */
-    position: fixed; /* Consolidated */
-    top: 50%; /* Consolidated */
-    left: 50%; /* Consolidated */
-    transform: translate(-50%, -50%); /* Consolidated */
+#AjudaModal {
+    display: none; 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
     background-color: white;
     border: 2px solid black;
     padding: 20px;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Consolidated */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
-#helpModal #helpText {
+#AjudaModal #AjudaText {
     margin-bottom: 20px;
 }
 
@@ -118,26 +126,39 @@ button {
     border: 2px solid rgba(255, 192, 203, 0.5);
 }
 
+/* Botons estandard */
+.standard-button {
+    width: 150px;
+    height: 44px;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px;
+}
+
+.standard-large-button {
+    width: 250px;
+}
+
 /* Team button styles */
 button.team1 {
     background-color: blue;
     color: white;
-    border: 2px solid blue; /* Consolidated */
+    border: 2px solid blue; 
 }
 button.team2 {
     background-color: purple;
     color: white;
-    border: 2px solid purple; /* Consolidated */
+    border: 2px solid purple; 
 }
 button.team3 {
     background-color: orange;
     color: white;
-    border: 2px solid orange; /* Consolidated */
+    border: 2px solid orange; 
 }
 button.team4 {
     background-color: pink;
     color: white;
-    border: 2px solid pink; /* Consolidated */
+    border: 2px solid pink; 
 }
 
 /* Bottom buttons */
@@ -150,8 +171,8 @@ button.team4 {
     gap: 10px;
 }
 
-/* Config and help sections */
-#configSection, #helpSection {
+/* Config and Ajuda sections */
+#configSection, #AjudaSection {
     position: fixed;
     bottom: 10px;
     left: 50%;
