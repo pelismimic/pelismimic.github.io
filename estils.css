@@ -70,7 +70,7 @@ button {
     text-align: center;
 }
 
-.configuracio-content label, .configuracio-content select {
+.configuracio-contingut label, .configuracio-contingut select {
     display: block;
     margin: 10px auto;
     text-align: center;
@@ -133,19 +133,19 @@ button {
 }
 
 /* Team colors */
-.team1 {
+.equip1 {
     background-color: rgba(0, 0, 255, 0.1);
     border: 2px solid rgba(0, 0, 255, 0.5);
 }
-.team2 {
+.equip2 {
     background-color: rgba(128, 0, 128, 0.1);
     border: 2px solid rgba(128, 0, 128, 0.5);
 }
-.team3 {
+.equip3 {
     background-color: rgba(255, 165, 0, 0.1);
     border: 2px solid rgba(255, 165, 0, 0.5);
 }
-.team4 {
+.equip4 {
     background-color: rgba(255, 192, 203, 0.1);
     border: 2px solid rgba(255, 192, 203, 0.5);
 }
@@ -164,22 +164,22 @@ button {
 }
 
 /* Team button styles */
-button.team1 {
+button.equip1 {
     background-color: blue;
     color: white;
     border: 2px solid blue; 
 }
-button.team2 {
+button.equip2 {
     background-color: purple;
     color: white;
     border: 2px solid purple; 
 }
-button.team3 {
+button.equip3 {
     background-color: orange;
     color: white;
     border: 2px solid orange; 
 }
-button.team4 {
+button.equip4 {
     background-color: pink;
     color: white;
     border: 2px solid pink; 
