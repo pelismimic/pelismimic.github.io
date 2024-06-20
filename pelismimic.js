@@ -74,20 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error carregant les pel·lícules:', error));
     }
 
-    function toggleConfig(show) {
-        config.classList.toggle('hidden', !show);
-        modifyConfigButton.classList.toggle('hidden', show);
-        AjudaButton.classList.toggle('hidden', show);
+    function conmutaConfig(show) {
+        config.classList.conmuta('hidden', !show);
+        modifyConfigButton.classList.conmuta('hidden', show);
+        AjudaButton.classList.conmuta('hidden', show);
     }
 
-    function toggleAjuda(show) {
-        AjudaModal.classList.toggle('hidden', !show);
+    function conmutaAjuda(show) {
+        AjudaModal.classList.conmuta('hidden', !show);
+
     }
 
     function updateScores() {
         for (let i = 1; i <= 4; i++) {
-            document.getElementById(`team${i}`).classList.toggle('highlight', i === currentTeam);
-            document.getElementById(`team${i}`).classList.toggle(`team${i}`, i === currentTeam);
+            document.getElementById(`team${i}`).classList.conmuta('highlight', i === currentTeam);
+            document.getElementById(`team${i}`).classList.conmuta(`team${i}`, i === currentTeam);
         }
     }
 
@@ -117,19 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    modifyConfigButton.addEventListener('click', () => toggleConfig(true));
-    cancelConfigButton.addEventListener('click', () => toggleConfig(false));
+    modifyConfigButton.addEventListener('click', () => conmutaConfig(true));
+    cancelConfigButton.addEventListener('click', () => conmutaConfig(false));
     applyConfigButton.addEventListener('click', () => {
         numTeams = parseInt(numTeamsSelect.value);
         const duration = parseInt(timeDurationSelect.value);
         const numMovies = parseInt(numMoviesSelect.value);
         setLanguage(languageSelect.value);
-        toggleConfig(false);
+        conmutaConfig(false);
         switchTurn();
     });
 
-    AjudaButton.addEventListener('click', () => toggleAjuda(true));
-    closeButton.addEventListener('click', () => toggleAjuda(false));
+    AjudaButton.addEventListener('click', () => conmutaAjuda(true));
+    closeButton.addEventListener('click', () => conmutaAjuda(false));
 
     turnMessage.addEventListener('click', () => {
         //turnButton.classList.add('hidden');
