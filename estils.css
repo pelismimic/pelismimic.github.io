@@ -213,6 +213,11 @@ button.equip6 {
     gap: 10px;
 }
 
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
 #configSection, #AjudaSection {
     position: fixed;
     bottom: 10px;

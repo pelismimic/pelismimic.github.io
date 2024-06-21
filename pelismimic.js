@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const botoModifConfig = document.getElementById('botoModifConfig');
     const botoCancelConfig = document.getElementById('botoCancelConfig');
     const turnMessage = document.getElementById('turnMessage');
-    const revealButton = document.getElementById('revealButton');
-    const startButton = document.getElementById('startButton');
-    const endButton = document.getElementById('endButton');
-    const respostaCorrecta = document.getElementById('respostaCorrecta');
-    const respostaIncorrecta = document.getElementById('respostaIncorrecta');
+    const botoRevelarPelicula = document.getElementById('botoRevelarPelicula');
+    const botoComençar = document.getElementById('botoComençar');
+    //const endButton = document.getElementById('endButton');
+    const botoRespostaCorrecta = document.getElementById('botoRespostaCorrecta');
+    const botoRespostaIncorrecta = document.getElementById('botoRespostaIncorrecta');
     const compteEnrera = document.getElementById('compteEnrera');
-    const movieTitle = document.getElementById('movieTitle');
+    const titolPelicula = document.getElementById('titolPelicula');
     const selectorIdioma = document.getElementById('selectorIdioma');
     const nombreEquipsSelect = document.getElementById('nombreEquips');
     const timeDurationSelect = document.getElementById('timeDuration');
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadMovieTitle(movie) {
         const title = movie[idiomaActual] || movie['ca'];
-        document.getElementById('movieTitle').textContent = title;
+        document.getElementById('titolPelicula').textContent = title;
     }
 
     function recullTraduccions() {
@@ -194,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(compteEnreraTimer);
                 new Audio('https://pelismimic.github.io/sirena.mp3').play();
                 compteEnrera.classList.add('hidden');
-                endButton.classList.add('hidden');
-                respostaCorrecta.classList.remove('hidden');
-                respostaIncorrecta.classList.remove('hidden');
+                //endButton.classList.add('hidden');
+                botoRespostaCorrecta.classList.remove('hidden');
+                botoRespostaIncorrecta.classList.remove('hidden');
             }
         }, 1000);
     }
@@ -217,49 +217,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     turnMessage.addEventListener('click', () => {
         //turnButton.classList.add('hidden');
-        //revealButton.classList.remove('hidden');
-        startButton.classList.add('hidden');
-        endButton.classList.add('hidden');
+        //botoRevelarPelicula.classList.remove('hidden');
+        botoComençar.classList.add('hidden');
+        //endButton.classList.add('hidden');
     });
 
-    revealButton.addEventListener('click', () => {
+    botoRevelarPelicula.addEventListener('click', () => {
         currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
         loadMovieTitle(movieList[currentMovieIndex]);
-        movieTitle.classList.remove('hidden');
-        revealButton.classList.add('hidden');
-        startButton.classList.remove('hidden');
+        titolPelicula.classList.remove('hidden');
+        botoRevelarPelicula.classList.add('hidden');
+        botoComençar.classList.remove('hidden');
     });
 
-    startButton.addEventListener('click', () => {
+    botoComençar.addEventListener('click', () => {
         const duration = parseInt(timeDurationSelect.value);
         començaCompteEnrera(duration);
-        startButton.classList.add('hidden');
-        endButton.classList.remove('hidden');
+        botoComençar.classList.add('hidden');
+        //endButton.classList.remove('hidden');
     });
 
+    /*
     endButton.addEventListener('click', () => {
         clearInterval(compteEnreraTimer);
         compteEnrera.classList.add('hidden');
         endButton.classList.add('hidden');
-        respostaCorrecta.classList.remove('hidden');
-        respostaIncorrecta.classList.remove('hidden');
-    });
+        botoRespostaCorrecta.classList.remove('hidden');
+        botoRespostaIncorrecta.classList.remove('hidden');
+    });   */
 
-    respostaCorrecta.addEventListener('click', () => {
+    botoRespostaCorrecta.addEventListener('click', () => {
         const teamScore = document.getElementById(`team${equipActual}`);
         teamScore.textContent = parseInt(teamScore.textContent) + 1;
         respostaCorrecta.classList.add('hidden');
         respostaIncorrecta.classList.add('hidden');
         turnMessage.classList.remove('hidden');
-        movieTitle.classList.add('hidden');
+        titolPelicula.classList.add('hidden');
         canviaTorn();
     });
 
-    respostaIncorrecta.addEventListener('click', () => {
+    botoRespostaIncorrecta.addEventListener('click', () => {
         respostaCorrecta.classList.add('hidden');
         respostaIncorrecta.classList.add('hidden');
         turnMessage.classList.remove('hidden');
-        movieTitle.classList.add('hidden');
+        titolPelicula.classList.add('hidden');
         canviaTorn();
     });
 
