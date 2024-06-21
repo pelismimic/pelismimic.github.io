@@ -186,7 +186,7 @@ button.equip4 {
 }
 
 /* Bottom buttons */
-.bottom-botons {
+.inferior-botons {
     position: fixed;
     bottom: 20px;
     width: 100%;
@@ -204,4 +204,14 @@ button.equip4 {
     display: flex;
     justify-content: center;
     gap: 10px;
+}
+
+.text-box-debug {
+    border: 2px solid #333; /* Borde de la caixa */
+    padding: 20px;          /* Espai intern de la caixa */
+    background-color: #f9f9f9; /* Color de fons de la caixa */
+    border-radius: 5px;     /* Borde arrodonit */
+    width: 50%;             /* Amplada de la caixa */
+    margin: 20px auto;      /* Centrat a la pàgina */
+    font-family: Arial, sans-serif; /* Tipus de lletra */
 }

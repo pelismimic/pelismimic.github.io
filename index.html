@@ -16,6 +16,10 @@
             <div id="equip3" class="score hidden">0</div>
             <div id="equip4" class="score hidden">0</div>
         </div>
+        <div id="debugMissatge"class="text-box">
+            Aquest és un text dins d'una caixa.
+        </div>
+        
         <div id="turnMessage" class="message boto-estandar-llarg" data-translation-key="turnMessage"></div>
 		<div id="controls">
         <button id="revealButton" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="revealButton">Revelar Pel·lícula</button>
@@ -35,7 +39,7 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
-            <label for="timeDuration" data-translation-key="etiquetaTempsRespondre_i18n">Durada del temps (segons):</label>
+            <label for="timeDuration" data-translation-key="etiquetaTempsRespondre_i18n">Durada del temps:</label>
             <select id="timeDuration">
                 <option value="10">0:10</option>
                 <option value="60">1:00</option>
@@ -56,24 +60,24 @@
             <select id="selectorIdioma">
                 <option value="ca" data-translation-key="catala_i18n">Català</option>
                 <option value="es" data-translation-key="castella_i18n">Castellano</option>
-                <option value="en" data-translation-key="angles_i18n">EnglishAngles</option>
+                <option value="en" data-translation-key="angles_i18n">English</option>
                 <option value="fr" data-translation-key="frances_i18n">Français</option>
             </select>
             </div>
             <div class="spacer"></div>
             <div class="configuracio-botons">
             <button id="botoModifConfig" class="boto-estandar" data-translation-key="botoModifConfig_i18n">Aplicar</button>
-            <button id="botoCancelConfig" class="boto-estandar" data-translation-key="botoCancelar">Cancel·lar</button>
+            <button id="botoCancelConfig" class="boto-estandar" data-translation-key="botoCancelar_i18n">Cancel·lar</button>
             </div>
         </div>
-        <div id="AjudaModal"><!-- class="hidden"> -->
-            <div id="AjudaText" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
+        <div id="modalAjuda" class="hidden">
+            <div id="textAjuda" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
             hola hoa hola
             <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
         </div>
         
     </div>
-    <div class="bottom-botons">
+    <div class="inferior-botons">
         <button id="botoConfiguracio" class="boto-estandar" data-translation-key="botoConfiguracio_i18n">Configuració</button>
         <button id="botoAjuda" class="boto-estandar" data-translation-key="botoAjuda_i18n">Ajuda</button>
     </div>
