@@ -33,9 +33,9 @@ h1 {
 }
 
 .score {
-    width: 50px;
+    width: 75px;
     height: 50px;
-    border-radius: 80%;
+    border-radius: 20% / 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +44,7 @@ h1 {
 
 button {
     display: inline-block;
+    border-radius: 10% / 50%;
     padding: 10px 20px;
     margin: 10px 5px;
     font-size: 1em; 
@@ -54,7 +55,6 @@ button {
     display: none;
 }
 
-/* Config section */
 #configuracioModal {
     background-color: #e0e0e0;
     padding: 20px;
@@ -71,7 +71,7 @@ button {
 }
 
 .configuracio-contingut label, .configuracio-contingut select {
-    display: block;
+    /* display: block; */
     margin: 10px auto;
     text-align: center;
 }
@@ -80,6 +80,7 @@ button {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px; 
 }
 
 #configSection h2 {
@@ -87,7 +88,7 @@ button {
 }
 
 #configSection label, #configSection input, #configSection select {
-    display: block;
+    /* display: block; */
     margin: 10px auto;
     text-align: center;
 }
@@ -103,7 +104,7 @@ button {
 
 #configuracioModal select {
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 #configuracioModal .spacer {
@@ -134,22 +135,29 @@ button {
 
 /* Team colors */
 .equip1 {
-    background-color: rgba(0, 0, 255, 0.1);
-    border: 2px solid rgba(0, 0, 255, 0.5);
+    background-color: #faca9e;
+    border: 2px solid #613105;
 }
 .equip2 {
-    background-color: rgba(128, 0, 128, 0.1);
-    border: 2px solid rgba(128, 0, 128, 0.5);
+    background-color: #9ed2fa;
+    border: 2px solid #053961;
 }
 .equip3 {
-    background-color: rgba(255, 165, 0, 0.1);
-    border: 2px solid rgba(255, 165, 0, 0.5);
+    background-color: #feea9a;
+    border: 2px solid #655101;
 }
 .equip4 {
-    background-color: rgba(255, 192, 203, 0.1);
-    border: 2px solid rgba(255, 192, 203, 0.5);
+    background-color: #fca89c;
+    border: 2px solid #630f03;
 }
-
+.equip5 {
+    background-color: #b1e7b9;
+    border: 2px solid #184e20;
+}
+.equip6 {
+    background-color: #dfb9c2;
+    border: 2px solid #422029;
+}
 /* Botons estandard */
 .boto-estandar {
     width: 150px;
@@ -184,6 +192,16 @@ button.equip4 {
     color: white;
     border: 2px solid pink; 
 }
+button.equip5 {
+    background-color: pink;
+    color: white;
+    border: 2px solid pink; 
+}
+button.equip6 {
+    background-color: pink;
+    color: white;
+    border: 2px solid pink; 
+}
 
 /* Bottom buttons */
 .inferior-botons {
@@ -195,7 +213,6 @@ button.equip4 {
     gap: 10px;
 }
 
-/* Config and Ajuda sections */
 #configSection, #AjudaSection {
     position: fixed;
     bottom: 10px;
