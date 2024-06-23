@@ -8,7 +8,7 @@
      <link rel="stylesheet" href="./estils.css">  
 </head>
 <body>
-    <div id="pantallaJoc">
+    <div id="pantallaJoc" class="pantallaJoc">
         <h1 data-translation-key="titol_i18n">Pel·lícules i Mímica</h1>
         <div class="scores">
             <div id="equip1" class="score equip1">0</div>
@@ -22,7 +22,7 @@
             Aquest és un text dins d'una caixa.
         </div>
         
-        <div id="turnMessage" class="message boto-estandar-llarg" data-translation-key="turnMessage"></div>
+        <div id="turnMessage" class="message text-box" data-translation-key="turnMessage"></div>
 		<div id="controls">
         <button id="botoRevelarPelicula" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="revelarPelicula_i18n">Revelar Pel·lícula</button>
         <button id="botoComençar" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="botoComençar">Començar Compte Enrere</button>
@@ -36,6 +36,7 @@
         <h2 data-translation-key="titolConfiguracio_i18n">Configuració</h2>
             <br>
             <div class="configuracio-contingut">
+                <div>
             <label for="nombreEquips" data-translation-key="etiquetaNombreEquips_i18n">Nombre d'equips:</label>
             <select id="nombreEquips">
                 <option value="2">2</option>
@@ -44,7 +45,8 @@
                 <option value="5">5</option>
                 <option value="6">6</option>
             </select>
-            <br>
+            </div>
+            <div></div>
             <label for="timeDuration" data-translation-key="etiquetaTempsRespondre_i18n">Durada del temps:</label>
             <select id="timeDuration">
                 <option value="10">0:10</option>
@@ -52,7 +54,8 @@
                 <option value="90">1:30</option>
                 <option value="120">2:00</option>
             </select>
-            <br>
+        </div>
+        <div>
             <label for="nombrePelicules" data-translation-key="nombrePelicules_i18n">Nombre de pel·lícules:</label>
             <select id="nombrePelicules">
                 <option value="4">4</option>
@@ -63,7 +66,8 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <br>
+        </div>
+        <div>
             <label for="selectorIdioma" data-translation-key="etiquetaIdioma_i18n">Idioma:</label>
             <select id="selectorIdioma">
                 <option value="ca" data-translation-key="catala_i18n">Català</option>
@@ -71,7 +75,8 @@
                 <option value="en" data-translation-key="angles_i18n">English</option>
                 <option value="fr" data-translation-key="frances_i18n">Français</option>
             </select>
-            <br>
+        </div>
+        <div>.
             </div>
             <div class="spacer"></div>
             <div class="configuracio-botons">
@@ -79,12 +84,15 @@
             <button id="botoCancelConfig" class="boto-estandar" data-translation-key="botoCancelar_i18n">Cancel·lar</button>
         </div>
     </div>
-    <div id="modalAjuda" class="hidden">
+    <div id="ajudaModal" class="AjudaModal hidden">
+        <div class="ajuda-contingut">
         <div id="textAjuda" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
-        hola hoa hola
+        hola hoa hola 
+        <br>
+        v 0.2 
         <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
     </div> 
-
+    </div>  
     <div class="inferior-botons">
         <button id="botoConfiguracio" class="boto-estandar" data-translation-key="botoConfiguracio_i18n">Configuració</button>
         <button id="botoAjuda" class="boto-estandar" data-translation-key="botoAjuda_i18n">Ajuda</button>

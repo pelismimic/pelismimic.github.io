@@ -15,10 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let compteEnreraTimer;
 
     const pantallaJoc = document.getElementById('pantallaJoc');
-    const botoConfiguracio = document.getElementById('botoConfiguracio');
-    const botoAjuda = document.getElementById('botoAjuda');
-    const botoModifConfig = document.getElementById('botoModifConfig');
-    const botoCancelConfig = document.getElementById('botoCancelConfig');
+    //
     const turnMessage = document.getElementById('turnMessage');
     const botoRevelarPelicula = document.getElementById('botoRevelarPelicula');
     const botoComençar = document.getElementById('botoComençar');
@@ -27,16 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const botoRespostaIncorrecta = document.getElementById('botoRespostaIncorrecta');
     const compteEnrera = document.getElementById('compteEnrera');
     const titolPelicula = document.getElementById('titolPelicula');
+    //
     const selectorIdioma = document.getElementById('selectorIdioma');
     const nombreEquipsSelect = document.getElementById('nombreEquips');
     const timeDurationSelect = document.getElementById('timeDuration');
     const nombrePeliculesSelect = document.getElementById('nombrePelicules');
-    const config = document.getElementById('config'); 
-    const modalAjuda = document.getElementById('modalAjuda');
-    const textAjuda = document.getElementById('textAjuda'); // cal?
+    //const config = document.getElementById('config'); 
+    const botoModifConfig = document.getElementById('botoModifConfig');
+    const botoCancelConfig = document.getElementById('botoCancelConfig');
+    //
+    const ajudaModal = document.getElementById('ajudaModal');
+    const ajudaText = document.getElementById('ajudaText'); // cal?
     const botoTancarAjuda = document.getElementById('botoTancarAjuda');
+    //
+    const botoConfiguracio = document.getElementById('botoConfiguracio');
+    const botoAjuda = document.getElementById('botoAjuda');
+    //
     const debugMissatge = document.getElementById('debugMissatge');
    
+
     function montarDebugMissatge() {
         const dataihora = new Date();
         debugMissatge.textContent = dataihora.toUTCString() + " | equips:" + nombreEquips + " | temps:" + timeDurationSelect.value + 
@@ -131,9 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function conmutaConfiguracio(show) {
-        if (debug) {
-            missatgeConsola(show);
-        }
         configuracioModal.classList.toggle('hidden', !show);
         if (show) {
             pantallaJoc.classList.add('blur-background');
@@ -145,7 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function conmutaAjuda(show) {
-        modalAjuda.classList.toggle('hidden', !show);
+        ajudaModal.classList.toggle('hidden', !show);
+        if (show) {
+            pantallaJoc.classList.add('blur-background');
+        } else {
+            pantallaJoc.classList.remove('blur-background');
+        }
         botoConfiguracio.classList.toggle('hidden', show);
         botoAjuda.classList.toggle('hidden', show);
     }
@@ -178,7 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', true);
             }
         }
-        equipActual = nombreEquips;
+        equipActual = 1;
+        turnMessage.textContent = `Torn de l'equip ${equipActual}`;
+        botoRevelarPelicula.classList.remove('hidden');
+
         montarDebugMissatge();
     }
 
@@ -223,7 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     botoRevelarPelicula.addEventListener('click', () => {
-        currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
+        //currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
+        currentMovieIndex = 1;
         loadMovieTitle(movieList[currentMovieIndex]);
         titolPelicula.classList.remove('hidden');
         botoRevelarPelicula.classList.add('hidden');
