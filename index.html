@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translation-key="title">Pel·lícules i Mímica</title>
+    <title data-translation-key="titol_i18n">Pel·lícules i Mímica</title>
     <!-- <link rel="stylesheet" href="https://pelismimic.github.io/estils.css"> -->
      <link rel="stylesheet" href="./estils.css">  
 </head>
@@ -22,7 +22,7 @@
             Aquest és un text dins d'una caixa.
         </div>
         
-        <div id="turnMessage" class="message text-box" data-translation-key="turnMessage"></div>
+        <div id="appMissatge" class="message text-box" data-translation-key="appMissatge_i18n"></div>
 		<div id="controls">
         <button id="botoRevelarPelicula" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="revelarPelicula_i18n">Revelar Pel·lícula</button>
         <button id="botoComençar" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="botoComençar">Començar Compte Enrere</button>
@@ -58,6 +58,8 @@
         <div>
             <label for="nombrePelicules" data-translation-key="nombrePelicules_i18n">Nombre de pel·lícules:</label>
             <select id="nombrePelicules">
+                <option value="2">2</option>
+                <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
@@ -76,7 +78,7 @@
                 <option value="fr" data-translation-key="frances_i18n">Français</option>
             </select>
         </div>
-        <div>.
+        <div>
             </div>
             <div class="spacer"></div>
             <div class="configuracio-botons">
@@ -86,13 +88,13 @@
     </div>
     <div id="ajudaModal" class="AjudaModal hidden">
         <div class="ajuda-contingut">
-        <div id="textAjuda" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
-        hola hoa hola 
-        <br>
-        v 0.2 
-        <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
+          <div id="textAjuda" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
+            hola hoa hola 
+            <br>
+            v 0.2 
+            <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
+        </div> 
     </div> 
-    </div>  
     <div class="inferior-botons">
         <button id="botoConfiguracio" class="boto-estandar" data-translation-key="botoConfiguracio_i18n">Configuració</button>
         <button id="botoAjuda" class="boto-estandar" data-translation-key="botoAjuda_i18n">Ajuda</button>
