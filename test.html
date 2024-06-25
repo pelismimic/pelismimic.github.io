@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llista de Pel·lícules</title>
+    <style>
+        .movie-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .movie-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .movie-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Llista de Pel·lícules</h1>
+    <ul id="movieList" class="movie-list"></ul>
+
+    <script>
+        const moviesJson = `{
+            "movies": [
+                {
+                    "ca": "El Padrí",
+                    "es": "El Padrino",
+                    "en": "The Godfather",
+                    "fr": "Le Parrain"
+                },
+                {
+                    "ca": "Forrest Gump",
+                    "es": "Forrest Gump",
+                    "en": "Forrest Gump",
+                    "fr": "Forrest Gump"
+                },
+                {
+                    "ca": "El Senyor dels Anells",
+                    "es": "El Señor de los Anillos",
+                    "en": "The Lord of the Rings",
+                    "fr": "Le Seigneur des Anneaux"
+                }
+            ]
+        }`;
+ 
+        // Parseja el JSON
+        const moviesData = JSON.parse(moviesJson);
+        console.log("moviesData");
+        console.log(moviesData);
+
+        
+        fetch('https://pelismimic.github.io/pelicules.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la resposta de la xarxa');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const moviesList2 = data.movies;
+            console.log('Llistat de pel·lícules');
+            console.log(moviesList2);
+            //mostraPelicules(moviesList);
+        })
+        .catch(error => console.error('Error carregant les pel·lícules:', error));
+        const moviesData2 = JSON.parse(moviesJson);
+        console.log("moviesData2");
+        console.log(moviesData2);
+
+        // Referència a l'element de la llista
+        const movieList = document.getElementById('movieList');
+        console.log("movieList");
+        console.log(movieList);
+
+        // Genera els elements de la llista
+        moviesData.movies.forEach(movie => {
+            console.log(movie);
+            const listItem = document.createElement('li');
+            listItem.classList.add('movie-item');
+            listItem.innerHTML = `
+                <h3>Títols de la pel·lícula:</h3>
+                <p><strong>Català:</strong> ${movie.ca}</p>
+                <p><strong>Espanyol:</strong> ${movie.es}</p>
+                <p><strong>Anglès:</strong> ${movie.en}</p>
+                <p><strong>Francès:</strong> ${movie.fr}</p>
+            `;
+            movieList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
