@@ -112,7 +112,7 @@ button {
     margin-top: 20px;
 }
 
-#AjudaModal {
+#ajudaModal {
     background-color: #e0e0e0;
     padding: 20px;
     border-radius: 10px;
@@ -139,14 +139,20 @@ button {
 /* Team colors */
 .equip1 {
     background-color: #faca9e;
+}
+.equip1.jugant {
     border: 2px solid #613105;
 }
 .equip2 {
     background-color: #9ed2fa;
+}
+.equip2.jugant {
     border: 2px solid #053961;
 }
 .equip3 {
     background-color: #feea9a;
+}
+.equip3.jugant {
     border: 2px solid #655101;
 }
 .equip4 {
@@ -239,6 +245,7 @@ button.equip6 {
 }
 
 .text-box-debug {
+    display: flex;
     border: 2px solid #333; /* Borde de la caixa */
     padding: 20px;          /* Espai intern de la caixa */
     background-color: #f9f9f9; /* Color de fons de la caixa */
