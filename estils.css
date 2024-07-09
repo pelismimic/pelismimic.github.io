@@ -173,7 +173,14 @@ button {
 .boto-estandar-llarg {
     width: 250px;
 }
-
+.boto-verd {
+    background-color: #b1e7b9;
+    border: 2px solid #184e20;
+}
+.boto-vermell {
+    background-color: #fca89c;
+    border: 2px solid #630f03;
+}
 /* Team button styles */
 button.equip1 {
     background-color: blue;
