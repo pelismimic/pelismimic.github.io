@@ -17,11 +17,12 @@
         "botoCancelar_i18n": "Cancel·lar",
         "botoTancar_i18n": "Tancar",
         "etiquetaIdioma_i18n": "Idioma:",
-        "AjudaText_i18n": "Instruccions del joc...",
         "catala_i18n": "Català",
         "castella_i18n": "Castellano",
         "angles_i18n": "Angles",
-        "frances_i18n": "Français"
+        "frances_i18n": "Français",
+        "titolAjuda_i18n": "Ajuda",
+        "AjudaText_i18n": "Instruccions del joc..."
     },
     "es": {
         "titol_i18n": "Películas y Mímica",
@@ -41,11 +42,12 @@
         "botoCancelar_i18n": "Cancelar",
         "botoTancar_i18n": "Cerrar",
         "etiquetaIdioma_i18n": "Idioma:",
-        "AjudaText_i18n": "Instrucciones del juego...",
         "catala_i18n": "Català",
         "castella_i18n": "Castellano",
         "angles_i18n": "English",
-        "frances_i18n": "Français"
+        "frances_i18n": "Français",
+        "titolAjuda_i18n": "Ayuda",
+        "AjudaText_i18n": "Instrucciones del juego..."
     },
     "en": {
         "titol_i18n": "Movies and Mimicry",
@@ -65,11 +67,12 @@
         "botoCancelar_i18n": "Cancel",
         "botoTancar_i18n": "Close",
         "etiquetaIdioma_i18n": "Language:",
-        "AjudaText_i18n": "Game instructions...",
         "catala_i18n": "Català",
         "castella_i18n": "Castellano",
         "angles_i18n": "English",
-        "frances_i18n": "Français"
+        "frances_i18n": "Français",
+        "titolAjuda_i18n": "Help",
+        "AjudaText_i18n": "Game instructions..."
     },
     "fr": {
         "titol_i18n": "Films et Mimes",
@@ -89,10 +92,11 @@
         "botoCancelar_i18n": "Annuler",
         "botoTancar_i18n": "Fermer",
         "etiquetaIdioma_i18n": "Langue:",
-        "AjudaText_i18n": "Instructions du jeu...",
         "catala_i18n": "Català",
         "castella_i18n": "Castellano",
         "angles_i18n": "English",
-        "frances_i18n": "Français"
+        "frances_i18n": "Français",
+        "titolAjuda_i18n": "Aide",
+        "AjudaText_i18n": "Instructions du jeu..."
     }
 }
