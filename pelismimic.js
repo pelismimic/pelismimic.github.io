@@ -231,6 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
             compteEnrera.textContent = time;
             if (time <= 0) {
                 clearInterval(compteEnreraTimer);
+                compteEnrera.classList.add('hidden');
+                appMissatge.textContent = `Equip ${equipActual}   S'ha acabat el temps!`;
                 new Audio('https://pelismimic.github.io/sirena.mp3').play();
                 compteEnrera.classList.add('hidden');
                 //endButton.classList.add('hidden');
