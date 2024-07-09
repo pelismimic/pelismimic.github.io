@@ -22,14 +22,14 @@
             Aquest és un text dins d'una caixa.
         </div>
         
-        <div id="appMissatge" class="message text-box" data-translation-key="appMissatge_i18n"></div>
+        <div id="appMissatge" class="missatge text-box" data-translation-key="appMissatge_i18n"></div>
 		<div id="controls">
         <button id="botoRevelarPelicula" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="revelarPelicula_i18n">Revelar Pel·lícula</button>
         <button id="botoComençar" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="botoComençar">Començar Compte Enrere</button>
-        <button id="botoRespostaCorrecta" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="respostaCorrecta_i18n">Sumar 1 Punt</button>
-        <button id="botoRespostaIncorrecta" class="hidden boto-estandar boto-estandar-llarg" data-translation-key="respostaIncorrecta_i18n">No Acertat</button>
+        <button id="botoRespostaCorrecta" class="hidden boto-estandar boto-estandar-llarg boto-verd" data-translation-key="respostaCorrecta_i18n">Sumar 1 Punt</button>
+        <button id="botoRespostaIncorrecta" class="hidden boto-estandar boto-estandar-llarg boto-vermell" data-translation-key="respostaIncorrecta_i18n">No Acertat</button>
         </div>
-        <div id="titolPelicula" class="hidden message text-box"></div>
+        <div id="titolPelicula" class="hidden missatge text-box"></div>
         <div id="compteEnrera" class="hidden"></div>
     </div>
     <div id="configuracioModal" class="hidden">
@@ -86,12 +86,15 @@
             <button id="botoCancelConfig" class="boto-estandar" data-translation-key="botoCancelar_i18n">Cancel·lar</button>
         </div>
     </div>
-    <div id="ajudaModal" class="AjudaModal hidden">
+    <div id="ajudaModal" class="hidden">
+        <h2 data-translation-key="titolAjuda_i18n">Ajuda</h2>
+        <br>
         <div class="ajuda-contingut">
           <div id="textAjuda" data-translation-key="AjudaText_i18n">Instruccions del joc...</div>
             hola hoa hola 
             <br>
-            v 0.2 
+            ver 0.3 
+            <br>
             <button id="botoTancarAjuda" class="boto-estandar" data-translation-key="botoTancar_i18n">Tancar</button>
         </div> 
     </div> 

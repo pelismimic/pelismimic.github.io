@@ -185,22 +185,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function actualitzaComptadors() {
-        for (let i = 1; i <= NOMBREEQUIPSMAX; i++) {
-            document.getElementById(`equip${i}`).classList.toggle('highlight', i === equipActual);
-            document.getElementById(`equip${i}`).classList.toggle(`equip${i}`, i === equipActual);
+        for (let i = 1; i <= nombreEquipsSelect.value; i++) {
+            document.getElementById(`equip${i}`).classList.toggle('jugant', i === equipActual);
         }
     }
 
     function canviaTorn() {
-        missatgeConsola("[canviaTorn]  equipActual: " + equipActual + " | " + "nombreEquips: " + nombreEquips);
-        
-        equipActual = (equipActual % nombreEquips) + 1;
+        appMissatge.classList.remove(`equip${equipActual}`);
+        equipActual = (equipActual % nombreEquipsSelect.value) + 1;
         actualitzaComptadors();
         appMissatge.textContent = `Torn de l'equip ${equipActual}`;
-        appMissatge.className = `equip${equipActual}`;
-
-        missatgeConsola("[canviaTorn]    equipActual: " + equipActual);
-
+        appMissatge.classList.add(`equip${equipActual}`);
+        botoRevelarPelicula.classList.remove('hidden');
+        montarDebugMissatge();
     }
 
     function iniciaPartida() {
@@ -209,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i <= nombreEquipsSelect.value) {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', false);
                 document.getElementById(`equip${i}`).classList.toggle(`equip${i}`, true);
+                document.getElementById(`equip${i}`).classList.toggle('jugant', i === equipActual);
             }
             else {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', true);
@@ -216,7 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         equipActual = 1;
         appMissatge.textContent = `Torn de l'equip ${equipActual}`;
+        appMissatge.classList.add(`equip${equipActual}`);
+        //document.getElementById(`equip${equipActual}`).classList.add('jugant');
         botoRevelarPelicula.classList.remove('hidden');
+        botoRespostaCorrecta.classList.add('hidden');
+        botoRespostaIncorrecta.classList.add('hidden');
         missatgeConsola("[iniciaPartida]    equipActual: " + equipActual);
         montarDebugMissatge();
     }
@@ -292,18 +294,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });   */
 
     botoRespostaCorrecta.addEventListener('click', () => {
-        const teamScore = document.getElementById(`team${equipActual}`);
-        teamScore.textContent = parseInt(teamScore.textContent) + 1;
-        respostaCorrecta.classList.add('hidden');
-        respostaIncorrecta.classList.add('hidden');
+        const puntsEquip = document.getElementById(`equip${equipActual}`);
+        puntsEquip.textContent = parseInt(puntsEquip.textContent) + 1;
+        botoRespostaCorrecta.classList.add('hidden');
+        botoRespostaIncorrecta.classList.add('hidden');
         appMissatge.classList.remove('hidden');
         titolPelicula.classList.add('hidden');
         canviaTorn();
     });
 
     botoRespostaIncorrecta.addEventListener('click', () => {
-        respostaCorrecta.classList.add('hidden');
-        respostaIncorrecta.classList.add('hidden');
+        botoRespostaCorrecta.classList.add('hidden');
+        botoRespostaIncorrecta.classList.add('hidden');
         appMissatge.classList.remove('hidden');
         titolPelicula.classList.add('hidden');
         canviaTorn();

@@ -25,10 +25,12 @@ h1 {
     text-align: center;
 }
 
-.message {
+.missatge {
     font-size: 1.5em;
     margin: 20px 0;
     text-align: center;
+    display: inline-block;
+    padding: 2px 20px 2px 20px;
 }
 
 .scores {
@@ -157,14 +159,20 @@ button {
 }
 .equip4 {
     background-color: #fca89c;
+}
+.equip4.jugant {
     border: 2px solid #630f03;
 }
 .equip5 {
     background-color: #b1e7b9;
+}
+.equip5.jugant {
     border: 2px solid #184e20;
 }
 .equip6 {
     background-color: #dfb9c2;
+}
+.equip6.jugant {
     border: 2px solid #422029;
 }
 /* Botons estandard */
@@ -181,11 +189,9 @@ button {
 }
 .boto-verd {
     background-color: #b1e7b9;
-    border: 2px solid #184e20;
 }
 .boto-vermell {
     background-color: #fca89c;
-    border: 2px solid #630f03;
 }
 /* Team button styles */
 button.equip1 {
