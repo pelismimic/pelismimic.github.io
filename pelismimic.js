@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const dataihora = new Date();
         debugMissatge.textContent = dataihora.toUTCString() + " | equips:" + nombreEquipsSelect.value + " | temps:" + timeDurationSelect.value + 
         " | pelis:" + nombrePeliculesSelect.value + " | idioma:" + selectorIdioma.value + " | equipActual:" + equipActual;
-  
         missatgeConsola(debugMissatge.textContent);
     }
 
     function missatgeConsola(text1, text2) {
         if (debugActiu) {
-            console.log(text1, text2);
+            const dataihora = new Date();
+            console.log(dataihora.getUTCHours() + ':' + dataihora.getUTCMinutes() + ':' + dataihora.getUTCSeconds() + '.' + dataihora.getUTCMilliseconds(), text1, text2);
         }
     }
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             temps: timeDurationSelect.value
         }
         document.cookie = NOMCOOKIE + '=' + (JSON.stringify(valors)) + `;expires=${expiryDate.toUTCString()};path=/;SameSite=Lax;Secure`;
-        missatgeConsola(JSON.stringify(valors));
+        missatgeConsola("[estableixCookie]" + JSON.stringify(valors));
     }
 
     function recullCookie() { 
@@ -123,8 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('option[value="fr"]').textContent = conjuntTraduccions[idiomaActual]['frances_i18n'];    
     }
 
-
-
     function recullTraduccions() {
         fetch('https://pelismimic.github.io/traduccions.json')
             .then(response => response.json())
@@ -146,9 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             moviesList = data.movies;
             NOMBREPELICULESMAX = moviesList.length;
-            missatgeConsola("[recullPelicules2] typeof moviesList: ", typeof moviesList);
-            missatgeConsola('[recullPelicules2] Llistat de pel·lícules:', moviesList);
-            missatgeConsola('[recullPelicules2] NOMBREPELICULESMAX:', NOMBREPELICULESMAX);
+            missatgeConsola('[recullPelicules] NOMBREPELICULESMAX:', NOMBREPELICULESMAX);
         })
         .catch(error => console.error('Error carregant les pel·lícules:', error));
     }
@@ -182,12 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
         llistaPeliculesAdivinades.push(novaPeli);
         const titol = moviesList[1][idiomaActual];
         document.getElementById('titolPelicula').textContent = titol;
+        missatgeConsola(`[TriarNovaPelicula]`);
     }
 
     function actualitzaComptadors() {
         for (let i = 1; i <= nombreEquipsSelect.value; i++) {
             document.getElementById(`equip${i}`).classList.toggle('jugant', i === equipActual);
         }
+        missatgeConsola(`[actualitzaComptadors]`);
     }
 
     function canviaTorn() {
@@ -198,9 +196,15 @@ document.addEventListener('DOMContentLoaded', () => {
         appMissatge.classList.add(`equip${equipActual}`);
         botoRevelarPelicula.classList.remove('hidden');
         montarDebugMissatge();
+        missatgeConsola(`[canviaTorn] torn ${equipActual}`); 
     }
 
-    function iniciaPartida() {
+    function prepararPartida() {
+        equipActual = 1;
+        appMissatge.textContent = `${nombrePeliculesSelect.value} pelicules. Temps ${formatejaCompteEnrera(timeDurationSelect.value)}`;
+        appMissatge.classList.remove('hidden');
+        botoComençarPartida.classList.remove('hidden');        
+        botoRevelarPelicula.classList.add('hidden');
         for (let i = 1; i <= NOMBREEQUIPSMAX; i++) {
             document.getElementById(`equip${i}`).textContent = "0"
             if (i <= nombreEquipsSelect.value) {
@@ -212,10 +216,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', true);
             }
         }
-        equipActual = 1;
+        missatgeConsola(`[prepararPartida]  ${appMissatge.textContent}`); 
+    }
+
+    function iniciaPartida() {      
         appMissatge.textContent = `Torn de l'equip ${equipActual}`;
         appMissatge.classList.add(`equip${equipActual}`);
         //document.getElementById(`equip${equipActual}`).classList.add('jugant');
+        botoComençarPartida.classList.add('hidden');
         botoRevelarPelicula.classList.remove('hidden');
         botoRespostaCorrecta.classList.add('hidden');
         botoRespostaIncorrecta.classList.add('hidden');
@@ -223,75 +231,34 @@ document.addEventListener('DOMContentLoaded', () => {
         montarDebugMissatge();
     }
 
-    function començaCompteEnrera(duration) {
-        let time = duration;
-        compteEnrera.textContent = time;
+    function formatejaCompteEnrera(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+    function començaCompteEnrera() {
+        let time = timeDurationSelect.value;
+        compteEnrera.textContent = formatejaCompteEnrera(time);
         compteEnrera.classList.remove('hidden');
 
         compteEnreraTimer = setInterval(() => {
             time -= 1;
-            compteEnrera.textContent = time;
+            compteEnrera.textContent = formatejaCompteEnrera(time);
             if (time <= 0) {
-                clearInterval(compteEnreraTimer);
-                compteEnrera.classList.add('hidden');
-                appMissatge.textContent = `Equip ${equipActual}   S'ha acabat el temps!`;
                 new Audio('https://pelismimic.github.io/sirena.mp3').play();
-                compteEnrera.classList.add('hidden');
-                //endButton.classList.add('hidden');
-                botoRespostaCorrecta.classList.remove('hidden');
-                botoRespostaIncorrecta.classList.remove('hidden');
+                aturaCompteEnrera();
             }
         }, 1000);
     }
 
-    botoConfiguracio.addEventListener('click', () => conmutaConfiguracio(true));
-    botoCancelConfig.addEventListener('click', () => conmutaConfiguracio(false));
-    botoModifConfig.addEventListener('click', () => {
-        //const nombreEquips = parseInt(nombreEquipsSelect.value);
-        //const duration = parseInt(timeDurationSelect.value);
-        //const nombrePelicules = parseInt(nombrePeliculesSelect.value);
-        estableixIdioma(selectorIdioma.value);
-        conmutaConfiguracio(false);
-        iniciaPartida();
-    });
-
-    botoAjuda.addEventListener('click', () => conmutaAjuda(true));
-    botoTancarAjuda.addEventListener('click', () => conmutaAjuda(false));
-
-    /*
-    appMissatge.addEventListener('click', () => {
-        //turnButton.classList.add('hidden');
-        //botoRevelarPelicula.classList.remove('hidden');
-        botoComençar.classList.add('hidden');
-        //endButton.classList.add('hidden');
-    });
-*/
-
-    botoRevelarPelicula.addEventListener('click', () => {
-        //currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
-        currentMovieIndex = 1;
-        TriarNovaPelicula()
-        titolPelicula.classList.remove('hidden');
-        botoRevelarPelicula.classList.add('hidden');
-        botoComençar.classList.remove('hidden');
-    });
-
-    botoComençar.addEventListener('click', () => {
-        const duration = parseInt(timeDurationSelect.value);
-        començaCompteEnrera(duration);
-        botoComençar.classList.add('hidden');        
-        botoRespostaCorrecta.classList.remove('hidden');
-        botoRespostaIncorrecta.classList.remove('hidden');
-    });
-
-    /*
-    endButton.addEventListener('click', () => {
+    function aturaCompteEnrera() {
         clearInterval(compteEnreraTimer);
-        compteEnrera.classList.add('hidden');
-        endButton.classList.add('hidden');
+        compteEnrera.textContent = "0:00";
+        appMissatge.textContent = `Equip ${equipActual} :  S'ha acabat el temps!`;
         botoRespostaCorrecta.classList.remove('hidden');
-        botoRespostaIncorrecta.classList.remove('hidden');
-    });   */
+        botoRespostaIncorrecta.classList.remove('hidden');    
+    }
 
     botoRespostaCorrecta.addEventListener('click', () => {
         const puntsEquip = document.getElementById(`equip${equipActual}`);
@@ -311,9 +278,47 @@ document.addEventListener('DOMContentLoaded', () => {
         canviaTorn();
     });
 
+    botoRevelarPelicula.addEventListener('click', () => {
+        //currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
+        currentMovieIndex = 1;
+        TriarNovaPelicula()
+        titolPelicula.classList.remove('hidden');
+        botoRevelarPelicula.classList.add('hidden');
+        botoComençar.classList.remove('hidden');
+    });
+
+    botoComençarPartida.addEventListener('click', () => {
+        missatgeConsola("->[iniciarPartida]");
+        iniciaPartida();
+    });
+
+    botoComençarComptar.addEventListener('click', () => {
+        començaCompteEnrera();
+    });
+
+    // configuració
+    botoConfiguracio.addEventListener('click', () => conmutaConfiguracio(true));
+    botoCancelConfig.addEventListener('click', () => conmutaConfiguracio(false));
+    botoModifConfig.addEventListener('click', () => {
+        estableixIdioma(selectorIdioma.value);
+        conmutaConfiguracio(false);
+        prepararPartida();
+    });
+
+    // ajuda
+    botoAjuda.addEventListener('click', () => conmutaAjuda(true));
+    botoTancarAjuda.addEventListener('click', () => conmutaAjuda(false));
+
+    missatgeConsola("[DOMContentLoaded]");
+    
+    missatgeConsola("->[recullTraduccions]");
     recullTraduccions();
+    missatgeConsola("->[recullPelicules]");
     recullPelicules();
+    missatgeConsola("->[recullCookie]");
     recullCookie();
-    iniciaPartida();
+    missatgeConsola("->[prepararPartida]");
+    prepararPartida();
+    //iniciaPartida();
 });
 //pelismimic:"{"idioma":"ca","equips":2}"

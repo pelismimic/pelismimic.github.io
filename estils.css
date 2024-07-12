@@ -107,7 +107,7 @@ button {
     margin-bottom: 25px;
     min-inline-size: 50px;
     display: inline-block;
-    text-align: right;
+    text-align: center;
 }
 
 #configuracioModal .spacer {
@@ -177,22 +177,39 @@ button {
 }
 /* Botons estandard */
 .boto-estandar {
-    width: 150px;
+    min-width: 150px;
     height: 44px;
     font-size: 16px;
     text-align: center;
     margin: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .boto-estandar-llarg {
-    width: 250px;
+    min-width: 250px;
 }
 .boto-verd {
     background-color: #b1e7b9;
 }
+.boto-verd:hover {
+    background-color: #9ed2a5; 
+}
 .boto-vermell {
     background-color: #fca89c;
 }
+.boto-vermell:hover {
+    background-color: #e07a71; 
+}
+
+.comptador {
+    font-size: 4em;
+    margin: 20px 0;
+    text-align: center;
+    display: block;
+    padding: 2px 20px 2px 20px;
+}
+
 /* Team button styles */
 button.equip1 {
     background-color: blue;
