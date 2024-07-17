@@ -38,16 +38,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let NOMBREPELICULESINICIAL = 4;
     let TEMPSINICIAL = 60;
     let NOMCOOKIE = 'pelismimic';
+    const ESCENAJOC = Object.freeze({
+        INICIARPARTIDA: 'INICIARPARTIDA',
+        TORNEQUIP: 'TORNEQUIP',
+        REVELARPELICULA: 'REVELARPELICULA',
+        COMPTANTTEMPS: 'COMPTANTTEMPS',
+        ACABATTEMPS: 'ACABATTEMPS',
+        ACABADAPARTIDA: 'ACABADAPARTIDA',
+        CONFIGURANT: 'CONFIGURANT',
+        AJUDANT: 'AJUDANT'
+    });
     // debug
     let debugActiu = true;
     // variables
     let conjuntTraduccions = {};
-    let moviesList = {};
+    let llistaPelicules = {};
     let idiomaActual = IDIOMAINICIAL;
     let equipActual = EQUIPACTUALINICIAL;
     let compteEnreraTimer;
     let NOMBREPELICULESMAX = 0;
-    let llistaPeliculesAdivinades = [];
+    let llistaPeliculesUsades = [];
 
     nombreEquipsSelect.value = NOMBREEQUIPSINICIAL;
     timeDurationSelect.value = TEMPSINICIAL;
@@ -69,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function estableixCookie() {
+        missatgeConsola("[estableixCookie] Ini.");
         esborraCookie(); 
         const expiryDate = new Date();
         expiryDate.setFullYear(expiryDate.getFullYear() + 1);
@@ -79,10 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
             temps: timeDurationSelect.value
         }
         document.cookie = NOMCOOKIE + '=' + (JSON.stringify(valors)) + `;expires=${expiryDate.toUTCString()};path=/;SameSite=Lax;Secure`;
-        missatgeConsola("[estableixCookie]" + JSON.stringify(valors));
+        missatgeConsola("[estableixCookie] Fi." + JSON.stringify(valors));
     }
 
     function recullCookie() { 
+        missatgeConsola("[recullCookie] Ini.");
         const nameEQ = NOMCOOKIE + "=";
         const ca = document.cookie.split(';');
         for (let i = 0; i < ca.length; i++) {
@@ -91,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (c.indexOf(nameEQ) == 0) cookieObject = JSON.parse(c.substring(nameEQ.length, c.length));
             //if (c.indexOf(nameEQ) == 0) return JSON.parse(c.substring(nameEQ.length, c.length));
         }
-        missatgeConsola("[recullCookie]", cookieObject);
+        missatgeConsola("[recullCookie] Fi.", cookieObject);
 
         selectorIdioma.value = idiomaActual = cookieObject.idioma;
         nombreEquipsSelect.value = cookieObject.equips;
@@ -101,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function esborraCookie() {
         document.cookie = NOMCOOKIE + '=; Max-Age=-99999999;SameSite=Lax;Secure';
+        missatgeConsola("[esborraCookie]");
     }
 
     function estableixIdioma(lang) {
@@ -132,9 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error carregant les traduccions:', error));
     }
-
+ 
     function recullPelicules() {
-        fetch('https://pelismimic.github.io/pelicules.json')
+        missatgeConsola("[recullPelicules] Ini.");
+        return fetch('https://pelismimic.github.io/pelicules.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la resposta de la xarxa');
@@ -142,13 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            moviesList = data.movies;
-            NOMBREPELICULESMAX = moviesList.length;
-            missatgeConsola('[recullPelicules] NOMBREPELICULESMAX:', NOMBREPELICULESMAX);
+            llistaPelicules = data.movies;
+            NOMBREPELICULESMAX = llistaPelicules.length;
+            missatgeConsola('[recullPelicules] Fi. NOMBREPELICULESMAX:', NOMBREPELICULESMAX);
         })
         .catch(error => console.error('Error carregant les pel·lícules:', error));
     }
-
+ 
     function conmutaConfiguracio(show) {
         configuracioModal.classList.toggle('hidden', !show);
         if (show) {
@@ -172,14 +186,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function TriarNovaPelicula() {
-        novaPeli = 1;
+       /* novaPeli = 1;
         // generar aleatori i mirar si no ha sortit a la partida
-
-        llistaPeliculesAdivinades.push(novaPeli);
-        const titol = moviesList[1][idiomaActual];
+        llistaPeliculesUsades.push(novaPeli);
+        const titol = llistaPelicules[1][idiomaActual];
         document.getElementById('titolPelicula').textContent = titol;
-        missatgeConsola(`[TriarNovaPelicula]`);
+        missatgeConsola(`[TriarNovaPelicula]`);*/
+
+
+        const peliculesDisponibles = llistaPelicules.filter(pelicula => !llistaPeliculesUsades.includes(pelicula));
+        if (peliculesDisponibles.length === 0) {
+            appMissatge.textContent = 'Totes les pel·lícules han estat utilitzades!';
+            return;
+        }
+        const indexAleatori = Math.floor(Math.random() * peliculesDisponibles.length);
+        const peliculaSeleccionada = peliculesDisponibles[indexAleatori];
+        document.getElementById('titolPelicula').textContent =  peliculaSeleccionada[idiomaActual];
+        llistaPeliculesUsades.push(peliculaSeleccionada);
+        
+        missatgeConsola('[TriarNovaPelicula]', ` usades:${llistaPeliculesUsades.length}  queden:${peliculesDisponibles.length}  triada:${indexAleatori}`);
     }
+
+    function conmutaVisualitzarBotons(estat) {
+        // Set specific buttons to visible based on the state
+        switch (estat) {
+            case ESCENAJOC.INICIARPARTIDA:
+                botoComençarPartida.classList.remove('hidden');
+                botoRevelarPelicula.classList.add('hidden');
+                botoComençarComptar.classList.add('hidden');
+                botoRespostaCorrecta.classList.add('hidden');
+                botoRespostaIncorrecta.classList.add('hidden');
+                titolPelicula.classList.add('hidden');
+                compteEnrera.classList.add('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.INICIARPARTIDA); 
+                break;
+            case ESCENAJOC.TORNEQUIP:
+                botoComençarPartida.classList.add('hidden');
+                botoRevelarPelicula.classList.remove('hidden');
+                botoComençarComptar.classList.add('hidden');
+                botoRespostaCorrecta.classList.add('hidden');
+                botoRespostaIncorrecta.classList.add('hidden');
+                titolPelicula.classList.add('hidden');
+                compteEnrera.classList.add('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.TORNEQUIP); 
+                break;
+            case ESCENAJOC.REVELARPELICULA: 
+                botoComençarPartida.classList.add('hidden');
+                botoRevelarPelicula.classList.add('hidden');
+                botoComençarComptar.classList.remove('hidden');
+                botoRespostaCorrecta.classList.add('hidden');
+                botoRespostaIncorrecta.classList.add('hidden');
+                titolPelicula.classList.remove('hidden');
+                compteEnrera.classList.add('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.REVELARPELICULA); 
+                break;            
+            case ESCENAJOC.COMPTANTTEMPS:
+                botoComençarPartida.classList.add('hidden');
+                botoRevelarPelicula.classList.add('hidden');
+                botoComençarComptar.classList.add('hidden');
+                botoRespostaCorrecta.classList.remove('hidden');
+                botoRespostaIncorrecta.classList.add('hidden');
+                titolPelicula.classList.add('equip1');
+                compteEnrera.classList.remove('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.COMPTANTTEMPS); 
+                break;
+            case ESCENAJOC.ACABATTEMPS: 
+                botoComençarPartida.classList.add('hidden');
+                botoRevelarPelicula.classList.add('hidden');
+                botoComençarComptar.classList.add('hidden');
+                botoRespostaCorrecta.classList.remove('hidden');
+                botoRespostaIncorrecta.classList.remove('hidden');
+                titolPelicula.classList.remove('hidden');
+                compteEnrera.classList.remove('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.ACABATTEMPS); 
+                break;
+            case ESCENAJOC.ACABADAPARTIDA: 
+                botoComençarPartida.classList.add('hidden');
+                botoRevelarPelicula.classList.add('hidden');
+                botoComençarComptar.classList.add('hidden');
+                botoRespostaCorrecta.classList.remove('hidden');
+                botoRespostaIncorrecta.classList.remove('hidden');
+                titolPelicula.classList.add('hidden');
+                compteEnrera.classList.add('hidden');
+                missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.ACABADAPARTIDA); 
+                break;
+        }
+    } 
 
     function actualitzaComptadors() {
         for (let i = 1; i <= nombreEquipsSelect.value; i++) {
@@ -203,9 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
         equipActual = 1;
         appMissatge.textContent = `${nombrePeliculesSelect.value} pelicules. Temps ${formatejaCompteEnrera(timeDurationSelect.value)}`;
         appMissatge.classList.remove('hidden');
-        botoComençarPartida.classList.remove('hidden');        
-        botoRevelarPelicula.classList.add('hidden');
         for (let i = 1; i <= NOMBREEQUIPSMAX; i++) {
+            appMissatge.classList.remove(`equip${i}`);
             document.getElementById(`equip${i}`).textContent = "0"
             if (i <= nombreEquipsSelect.value) {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', false);
@@ -216,19 +307,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', true);
             }
         }
-        missatgeConsola(`[prepararPartida]  ${appMissatge.textContent}`); 
+        conmutaVisualitzarBotons(ESCENAJOC.INICIARPARTIDA);
+        missatgeConsola(`[prepararPartida]  ${appMissatge.textContent}`);
+
     }
 
     function iniciaPartida() {      
         appMissatge.textContent = `Torn de l'equip ${equipActual}`;
-        appMissatge.classList.add(`equip${equipActual}`);
-        //document.getElementById(`equip${equipActual}`).classList.add('jugant');
-        botoComençarPartida.classList.add('hidden');
-        botoRevelarPelicula.classList.remove('hidden');
-        botoRespostaCorrecta.classList.add('hidden');
-        botoRespostaIncorrecta.classList.add('hidden');
-        missatgeConsola("[iniciaPartida]    equipActual: " + equipActual);
-        montarDebugMissatge();
+        appMissatge.classList.add(`equip${equipActual}`); 
+        conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP);
+        missatgeConsola("[iniciaPartida]    equipActual: " + equipActual); 
     }
 
     function formatejaCompteEnrera(time) {
@@ -240,41 +328,37 @@ document.addEventListener('DOMContentLoaded', () => {
     function començaCompteEnrera() {
         let time = timeDurationSelect.value;
         compteEnrera.textContent = formatejaCompteEnrera(time);
-        compteEnrera.classList.remove('hidden');
-
+        conmutaVisualitzarBotons(ESCENAJOC.COMPTANTTEMPS);
         compteEnreraTimer = setInterval(() => {
             time -= 1;
             compteEnrera.textContent = formatejaCompteEnrera(time);
             if (time <= 0) {
                 new Audio('https://pelismimic.github.io/sirena.mp3').play();
-                aturaCompteEnrera();
+                acabatCompteEnrera();
             }
         }, 1000);
     }
 
+    function acabatCompteEnrera() {
+        aturaCompteEnrera()
+        appMissatge.textContent = `Equip ${equipActual} :  S'ha acabat el temps!`;
+        conmutaVisualitzarBotons(ESCENAJOC.ACABATTEMPS);    
+    }
+
     function aturaCompteEnrera() {
         clearInterval(compteEnreraTimer);
-        compteEnrera.textContent = "0:00";
-        appMissatge.textContent = `Equip ${equipActual} :  S'ha acabat el temps!`;
-        botoRespostaCorrecta.classList.remove('hidden');
-        botoRespostaIncorrecta.classList.remove('hidden');    
     }
 
     botoRespostaCorrecta.addEventListener('click', () => {
+        aturaCompteEnrera()
         const puntsEquip = document.getElementById(`equip${equipActual}`);
         puntsEquip.textContent = parseInt(puntsEquip.textContent) + 1;
-        botoRespostaCorrecta.classList.add('hidden');
-        botoRespostaIncorrecta.classList.add('hidden');
-        appMissatge.classList.remove('hidden');
-        titolPelicula.classList.add('hidden');
-        canviaTorn();
+        canviaTorn();        
+        conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP);    
     });
 
-    botoRespostaIncorrecta.addEventListener('click', () => {
-        botoRespostaCorrecta.classList.add('hidden');
-        botoRespostaIncorrecta.classList.add('hidden');
-        appMissatge.classList.remove('hidden');
-        titolPelicula.classList.add('hidden');
+    botoRespostaIncorrecta.addEventListener('click', () => {    
+        conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP); 
         canviaTorn();
     });
 
@@ -282,9 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //currentMovieIndex = (currentMovieIndex + 1) % movieList.length;
         currentMovieIndex = 1;
         TriarNovaPelicula()
-        titolPelicula.classList.remove('hidden');
-        botoRevelarPelicula.classList.add('hidden');
-        botoComençar.classList.remove('hidden');
+        conmutaVisualitzarBotons(ESCENAJOC.REVELARPELICULA); 
     });
 
     botoComençarPartida.addEventListener('click', () => {
@@ -309,16 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
     botoAjuda.addEventListener('click', () => conmutaAjuda(true));
     botoTancarAjuda.addEventListener('click', () => conmutaAjuda(false));
 
-    missatgeConsola("[DOMContentLoaded]");
-    
-    missatgeConsola("->[recullTraduccions]");
-    recullTraduccions();
-    missatgeConsola("->[recullPelicules]");
+    missatgeConsola("[INICI 000]");
     recullPelicules();
-    missatgeConsola("->[recullCookie]");
+    recullTraduccions();
     recullCookie();
-    missatgeConsola("->[prepararPartida]");
     prepararPartida();
-    //iniciaPartida();
 });
-//pelismimic:"{"idioma":"ca","equips":2}"
