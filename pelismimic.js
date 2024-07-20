@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //const endButton = document.getElementById('endButton');
     const botoRespostaCorrecta = document.getElementById('botoRespostaCorrecta');
     const botoRespostaIncorrecta = document.getElementById('botoRespostaIncorrecta');
+    const botoTornemHi = document.getElementById('botoTornemHi');
     const compteEnrera = document.getElementById('compteEnrera');
     const titolPelicula = document.getElementById('titolPelicula');
     //
@@ -63,13 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     timeDurationSelect.value = TEMPSINICIAL;
     nombrePeliculesSelect.value = NOMBREPELICULESINICIAL; 
     selectorIdioma.value = IDIOMAINICIAL;
-
-    function montarDebugMissatge() {
-        const dataihora = new Date();
-        debugMissatge.textContent = dataihora.toUTCString() + " | equips:" + nombreEquipsSelect.value + " | temps:" + timeDurationSelect.value + 
-        " | pelis:" + nombrePeliculesSelect.value + " | idioma:" + selectorIdioma.value + " | equipActual:" + equipActual;
-        missatgeConsola(debugMissatge.textContent);
-    }
 
     function missatgeConsola(text1, text2) {
         if (debugActiu) {
@@ -186,14 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function TriarNovaPelicula() {
-       /* novaPeli = 1;
-        // generar aleatori i mirar si no ha sortit a la partida
-        llistaPeliculesUsades.push(novaPeli);
-        const titol = llistaPelicules[1][idiomaActual];
-        document.getElementById('titolPelicula').textContent = titol;
-        missatgeConsola(`[TriarNovaPelicula]`);*/
-
-
         const peliculesDisponibles = llistaPelicules.filter(pelicula => !llistaPeliculesUsades.includes(pelicula));
         if (peliculesDisponibles.length === 0) {
             appMissatge.textContent = 'Totes les pel·lícules han estat utilitzades!';
@@ -216,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarComptar.classList.add('hidden');
                 botoRespostaCorrecta.classList.add('hidden');
                 botoRespostaIncorrecta.classList.add('hidden');
+                botoTornemHi.classList.add('hidden');
                 titolPelicula.classList.add('hidden');
                 compteEnrera.classList.add('hidden');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.INICIARPARTIDA); 
@@ -226,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarComptar.classList.add('hidden');
                 botoRespostaCorrecta.classList.add('hidden');
                 botoRespostaIncorrecta.classList.add('hidden');
+                botoTornemHi.classList.add('hidden');
                 titolPelicula.classList.add('hidden');
                 compteEnrera.classList.add('hidden');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.TORNEQUIP); 
@@ -236,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarComptar.classList.remove('hidden');
                 botoRespostaCorrecta.classList.add('hidden');
                 botoRespostaIncorrecta.classList.add('hidden');
+                botoTornemHi.classList.add('hidden');
                 titolPelicula.classList.remove('hidden');
                 compteEnrera.classList.add('hidden');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.REVELARPELICULA); 
@@ -246,8 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarComptar.classList.add('hidden');
                 botoRespostaCorrecta.classList.remove('hidden');
                 botoRespostaIncorrecta.classList.add('hidden');
+                botoTornemHi.classList.add('hidden');
                 titolPelicula.classList.add('equip1');
                 compteEnrera.classList.remove('hidden');
+                compteEnrera.classList.add('comptador');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.COMPTANTTEMPS); 
                 break;
             case ESCENAJOC.ACABATTEMPS: 
@@ -256,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarComptar.classList.add('hidden');
                 botoRespostaCorrecta.classList.remove('hidden');
                 botoRespostaIncorrecta.classList.remove('hidden');
+                botoTornemHi.classList.add('hidden');
                 titolPelicula.classList.remove('hidden');
                 compteEnrera.classList.remove('hidden');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.ACABATTEMPS); 
@@ -264,9 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoComençarPartida.classList.add('hidden');
                 botoRevelarPelicula.classList.add('hidden');
                 botoComençarComptar.classList.add('hidden');
-                botoRespostaCorrecta.classList.remove('hidden');
-                botoRespostaIncorrecta.classList.remove('hidden');
-                titolPelicula.classList.add('hidden');
+                botoRespostaCorrecta.classList.add('hidden');
+                botoRespostaIncorrecta.classList.add('hidden');
+                botoTornemHi.classList.remove('hidden');
+                titolPelicula.classList.remove('hidden');
+                compteEnrera.classList.remove('comptador');
                 compteEnrera.classList.add('hidden');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.ACABADAPARTIDA); 
                 break;
@@ -280,15 +274,44 @@ document.addEventListener('DOMContentLoaded', () => {
         missatgeConsola(`[actualitzaComptadors]`);
     }
 
+
+
     function canviaTorn() {
         appMissatge.classList.remove(`equip${equipActual}`);
-        equipActual = (equipActual % nombreEquipsSelect.value) + 1;
-        actualitzaComptadors();
-        appMissatge.textContent = `Torn de l'equip ${equipActual}`;
-        appMissatge.classList.add(`equip${equipActual}`);
-        botoRevelarPelicula.classList.remove('hidden');
-        montarDebugMissatge();
-        missatgeConsola(`[canviaTorn] torn ${equipActual}`); 
+        missatgeConsola('[canviaTorn]', ` usades:${llistaPeliculesUsades.length}  usarem:${(nombrePeliculesSelect.value * nombreEquipsSelect.value)}`);
+        if (llistaPeliculesUsades.length < (nombrePeliculesSelect.value * nombreEquipsSelect.value)) {
+            equipActual = (equipActual % nombreEquipsSelect.value) + 1;
+            actualitzaComptadors();
+            appMissatge.textContent = `Torn de l'equip ${equipActual}`;
+            appMissatge.classList.add(`equip${equipActual}`);
+            //botoRevelarPelicula.classList.remove('hidden');
+            missatgeConsola(`[canviaTorn] torn ${equipActual}`); 
+            conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP);    
+        }
+        else {
+            missatgeConsola(`[maxpelis! ->FiPartida]`);
+            appMissatge.textContent = `Partida Acabada !!`;
+            let maxPunts = -1;
+            let equipsAmbMesPunts = [];
+            for (let i = 1; i <= nombreEquipsSelect.value; i++) {
+                const punts = parseInt(document.getElementById(`equip${i}`).textContent);
+                if (punts > maxPunts) {
+                    maxPunts = punts;
+                    equipsAmbMesPunts = [i]; // Reinicia la llista amb el nou màxim
+                } else if (punts === maxPunts) {
+                    equipsAmbMesPunts.push(i); // Afegeix l'equip a la llista
+                }
+            }
+            if (equipsAmbMesPunts.length == 1) { 
+                titolPelicula.textContent = `GUANYADOR l'equip ${equipsAmbMesPunts[0]}`;
+                titolPelicula.classList.add(`equip${equipsAmbMesPunts[0]}`); 
+                missatgeConsola(`[canviaTorn] guanyador `, titolPelicula.textContent);
+            } else if (equipsAmbMesPunts.length > 1) {
+                titolPelicula.textContent = `EMPATATS els equips ${equipsAmbMesPunts.join(', ')}`;
+                missatgeConsola(`[canviaTorn] empat `, titolPelicula.textContent);
+            }
+            conmutaVisualitzarBotons(ESCENAJOC.ACABADAPARTIDA);
+        }
     }
 
     function prepararPartida() {
@@ -307,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`equip${i}`).classList.toggle('hidden', true);
             }
         }
+        llistaPeliculesUsades = [];
         conmutaVisualitzarBotons(ESCENAJOC.INICIARPARTIDA);
         missatgeConsola(`[prepararPartida]  ${appMissatge.textContent}`);
 
@@ -354,11 +378,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const puntsEquip = document.getElementById(`equip${equipActual}`);
         puntsEquip.textContent = parseInt(puntsEquip.textContent) + 1;
         canviaTorn();        
-        conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP);    
     });
 
-    botoRespostaIncorrecta.addEventListener('click', () => {    
-        conmutaVisualitzarBotons(ESCENAJOC.TORNEQUIP); 
+    botoRespostaIncorrecta.addEventListener('click', () => {     
         canviaTorn();
     });
 
@@ -376,6 +398,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     botoComençarComptar.addEventListener('click', () => {
         començaCompteEnrera();
+    });
+
+    botoTornemHi.addEventListener('click', () => {
+        prepararPartida();
     });
 
     // configuració
