@@ -55,10 +55,299 @@
             "fr": "Toy Story I"
         },
         {
-            "ca": "Toy Story I",
-            "es": "Toy Story I",
-            "en": "Toy Story I",
-            "fr": "Toy Story I"
-        }
+            "ca": "Toy Story IV",
+            "es": "Toy Story IV",
+            "en": "Toy Story IV",
+            "fr": "Toy Story IV"
+        },
+        {
+            "ca": "Star Wars",
+            "es": "La Guerra de las Galaxias",
+            "en": "Star Wars",
+            "fr": "La Guerre des étoiles"
+        },
+        {
+            "ca": "Jurassic Park",
+            "es": "Parque Jurásico",
+            "en": "Jurassic Park",
+            "fr": "Jurassic Park"
+        },
+        {
+            "ca": "Harry Potter i la pedra filosofal",
+            "es": "Harry Potter y la piedra filosofal",
+            "en": "Harry Potter and the Philosopher's Stone",
+            "fr": "Harry Potter à l'école des sorciers"
+        },
+        {
+            "ca": "Inception",
+            "es": "Origen",
+            "en": "Inception",
+            "fr": "Inception"
+        },
+        {
+            "ca": "Matrix",
+            "es": "Matrix",
+            "en": "The Matrix",
+            "fr": "Matrix"
+        },
+        {
+            "ca": "El Rei Lleó",
+            "es": "El Rey León",
+            "en": "The Lion King",
+            "fr": "Le Roi Lion"
+        },
+        {
+            "ca": "Viatge a la Lluna",
+            "es": "Viaje a la Luna",
+            "en": "A Trip to the Moon",
+            "fr": "Le Voyage dans la Lune"
+        },
+        {
+            "ca": "Avatar",
+            "es": "Avatar",
+            "en": "Avatar",
+            "fr": "Avatar"
+        },
+        {
+            "ca": "Indiana Jones i l'última croada",
+            "es": "Indiana Jones y la última cruzada",
+            "en": "Indiana Jones and the Last Crusade",
+            "fr": "Indiana Jones et la Dernière Croisade"
+        },
+        {
+            "ca": "Monstres, S.A.",
+            "es": "Monstruos, S.A.",
+            "en": "Monsters, Inc.",
+            "fr": "Monstres et Cie"
+        },
+        {
+            "ca": "Buscant en Nemo",
+            "es": "Buscando a Nemo",
+            "en": "Finding Nemo",
+            "fr": "Le Monde de Nemo"
+        },
+        {
+            "ca": "Els Increïbles",
+            "es": "Los Increíbles",
+            "en": "The Incredibles",
+            "fr": "Les Indestructibles"
+        },
+        {
+            "ca": "Cars",
+            "es": "Cars",
+            "en": "Cars",
+            "fr": "Cars"
+        },
+        {
+            "ca": "Ratatouille",
+            "es": "Ratatouille",
+            "en": "Ratatouille",
+            "fr": "Ratatouille"
+        },
+        {
+            "ca": "Wall-E",
+            "es": "Wall-E",
+            "en": "Wall-E",
+            "fr": "Wall-E"
+        },
+        {
+            "ca": "Up",
+            "es": "Up",
+            "en": "Up",
+            "fr": "Là-haut"
+        },
+        {
+            "ca": "Brave",
+            "es": "Brave (Indomable)",
+            "en": "Brave",
+            "fr": "Rebelle"
+        },
+        {
+            "ca": "Inside Out",
+            "es": "Del revés",
+            "en": "Inside Out",
+            "fr": "Vice-versa"
+        },
+        {
+            "ca": "Coco",
+            "es": "Coco",
+            "en": "Coco",
+            "fr": "Coco"
+        },
+        {
+            "ca": "Els Venjadors",
+            "es": "Los Vengadores",
+            "en": "The Avengers",
+            "fr": "Les Avengers"
+        },
+        {
+            "ca": "Pantera Negra",
+            "es": "Pantera Negra",
+            "en": "Black Panther",
+            "fr": "Black Panther"
+        },
+        {
+            "ca": "Iron Man",
+            "es": "Iron Man",
+            "en": "Iron Man",
+            "fr": "Iron Man"
+        },
+        {
+            "ca": "Capità Amèrica: El Primer Venjador",
+            "es": "Capitán América: El Primer Vengador",
+            "en": "Captain America: The First Avenger",
+            "fr": "Captain America: First Avenger"
+        },
+        {
+            "ca": "Thor",
+            "es": "Thor",
+            "en": "Thor",
+            "fr": "Thor"
+        },
+        {
+            "ca": "Guardians de la Galàxia",
+            "es": "Guardianes de la Galaxia",
+            "en": "Guardians of the Galaxy",
+            "fr": "Les Gardiens de la Galaxie"
+        },
+        {
+            "ca": "Doctor Strange",
+            "es": "Doctor Strange",
+            "en": "Doctor Strange",
+            "fr": "Docteur Strange"
+        },
+        {
+            "ca": "Spider-Man: Homecoming",
+            "es": "Spider-Man: Homecoming",
+            "en": "Spider-Man: Homecoming",
+            "fr": "Spider-Man: Homecoming"
+        },
+        {
+            "ca": "Ant-Man",
+            "es": "Ant-Man",
+            "en": "Ant-Man",
+            "fr": "Ant-Man"
+        },
+        {
+            "ca": "Capitana Marvel",
+            "es": "Capitana Marvel",
+            "en": "Captain Marvel",
+            "fr": "Captain Marvel"
+        },
+            {
+                "ca": "Star Wars: L'Imperi Contraataca",
+                "es": "Star Wars: El Imperio Contraataca",
+                "en": "Star Wars: The Empire Strikes Back",
+                "fr": "Star Wars: L'Empire Contre-Attaque"
+            },
+            {
+                "ca": "Indiana Jones: Els Caçadors de l'Arca Perduda",
+                "es": "Indiana Jones: En Busca del Arca Perdida",
+                "en": "Indiana Jones: Raiders of the Lost Ark",
+                "fr": "Indiana Jones: Les Aventuriers de l'Arche Perdue"
+            },
+            {
+                "ca": "Blade Runner",
+                "es": "Blade Runner",
+                "en": "Blade Runner",
+                "fr": "Blade Runner"
+            },
+            {
+                "ca": "E.T. L'Extraterrestre",
+                "es": "E.T. El Extraterrestre",
+                "en": "E.T. The Extra-Terrestrial",
+                "fr": "E.T. L'Extraterrestre"
+            },
+            {
+                "ca": "Retorn al Futur",
+                "es": "Regreso al Futuro",
+                "en": "Back to the Future",
+                "fr": "Retour vers le Futur"
+            },
+            {
+                "ca": "Aliens: El Retorn",
+                "es": "Aliens: El Regreso",
+                "en": "Aliens: The Return",
+                "fr": "Aliens: Le Retour"
+            },
+            {
+                "ca": "La Princesa Promesa",
+                "es": "La Princesa Prometida",
+                "en": "The Princess Bride",
+                "fr": "Princess Bride"
+            },
+            {
+                "ca": "El Club dels Poetes Morts",
+                "es": "El Club de los Poetas Muertos",
+                "en": "Dead Poets Society",
+                "fr": "Le Cercle des Poètes Disparus"
+            },
+            {
+                "ca": "Ballant amb Llops",
+                "es": "Bailando con Lobos",
+                "en": "Dances with Wolves",
+                "fr": "Danse avec les Loups"
+            },
+            {
+                "ca": "El Silenci dels Anyells",
+                "es": "El Silencio de los Corderos",
+                "en": "The Silence of the Lambs",
+                "fr": "Le Silence des Agneaux"
+            },
+            {
+                "ca": "Reservoir Dogs",
+                "es": "Reservoir Dogs",
+                "en": "Reservoir Dogs",
+                "fr": "Reservoir Dogs"
+            },
+            {
+                "ca": "Pulp Fiction",
+                "es": "Pulp Fiction",
+                "en": "Pulp Fiction",
+                "fr": "Pulp Fiction"
+            },
+            {
+                "ca": "La Vida és Bella",
+                "es": "La Vida es Bella",
+                "en": "Life is Beautiful",
+                "fr": "La Vie est Belle"
+            },
+            {
+                "ca": "Titanic",
+                "es": "Titanic",
+                "en": "Titanic",
+                "fr": "Titanic"
+            },
+            {
+                "ca": "Matrix",
+                "es": "Matrix",
+                "en": "The Matrix",
+                "fr": "Matrix"
+            },
+            {
+                "ca": "El Sisè Sentit",
+                "es": "El Sexto Sentido",
+                "en": "The Sixth Sense",
+                "fr": "Le Sixième Sens"
+            },
+            {
+                "ca": "Braveheart",
+                "es": "Braveheart",
+                "en": "Braveheart",
+                "fr": "Braveheart"
+            },
+            {
+                "ca": "Gladiator",
+                "es": "Gladiator",
+                "en": "Gladiator",
+                "fr": "Gladiator"
+            },
+            {
+                "ca": "El Pacient Anglès",
+                "es": "El Paciente Inglés",
+                "en": "The English Patient",
+                "fr": "Le Patient Anglais"
+            }
+             
     ]
 }
