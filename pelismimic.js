@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botoRespostaCorrecta.classList.remove('hidden');
                 botoRespostaIncorrecta.classList.add('hidden');
                 botoTornemHi.classList.add('hidden');
-                titolPelicula.classList.add('equip1');
+                titolPelicula.classList.remove('hidden');
                 compteEnrera.classList.remove('hidden');
                 compteEnrera.classList.add('comptador');
                 missatgeConsola('[conmutaVisualitzarBotons]', ESCENAJOC.COMPTANTTEMPS); 
